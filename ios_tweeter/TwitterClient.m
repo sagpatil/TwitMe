@@ -29,6 +29,15 @@
 }
 
 
+- (void)loginInternal {
+    [self.requestSerializer removeAccessToken];
+    [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"sptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
+        NSLog(@"Got the token");
+        NSString *authURL = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:authURL]];
+    } failure:^(NSError *error) {NSLog(@"didn't get the token!");}];
+}
+
 - (void)login {
     [self.requestSerializer removeAccessToken];
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"sptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
@@ -47,9 +56,9 @@
 }
 
 
-- (AFHTTPRequestOperation *)tweetWithSuccess:(NSDictionary *)param success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
-    return [self POST:@"1.1/statuses/update.json" parameters:param success:success failure:failure];
-}
+//- (AFHTTPRequestOperation *)tweetWithSuccess:(NSDictionary *)param success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
+//    return [self POST:@"1.1/statuses/update.json" parameters:param success:success failure:failure];
+//}
 
 
 
@@ -57,9 +66,35 @@
     return [self GET:@"1.1/statuses/user_timeline.json" parameters:nil success:success failure:failure];
 }
 
--(AFHTTPRequestOperation *) postTweetWithSuccess:(NSDictionary *)param sucess:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError*error))failure{
-    return [self POST:@"1.1/statuses/update.json" parameters:param success:success failure:failure];
+- (void) postTweet:(NSDictionary *)param success:(void (^)(Tweet* tweet))success failure:(void (^)(NSError *))failure{
+    
+    
+    [self POST:@"1.1/statuses/update.json" parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *response = (NSDictionary*) responseObject;
+            NSLog(@"%@", response);
+            NSError *error = nil;
+            Tweet *t = [[Tweet alloc]init];
+            NSDictionary *currTweet = response;
+            t = [MTLJSONAdapter modelOfClass: Tweet.class fromJSONDictionary: currTweet error: &error];
+            
+            //extract the user info from the tweet
+            User* currentTweetUser = [[User alloc] init];
+            NSDictionary *userInfo = (NSDictionary *) t.user;
+            currentTweetUser = [MTLJSONAdapter modelOfClass: User.class fromJSONDictionary: userInfo error: &error];
+            t.user = currentTweetUser;
+
+            if (success) success(t);
+        } else {
+            if (failure) failure([NSError errorWithDomain:@"Post Tweet" code:400 userInfo:nil]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (failure) failure(error);
+    }];
+    
 }
+
 
 
 //#todo unretweet (find the retweet by id and then delete it
@@ -68,6 +103,8 @@
 {
     if (tweet.retweeted) {
          failure([NSError errorWithDomain:@"Alread retweeted." code:400 userInfo:nil]);
+        return;
+        
     }
     
     NSString *retweetResource = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.idStr];
@@ -110,7 +147,7 @@
               
               //extract the user info from the tweet
               User* currentTweetUser = [[User alloc] init];
-              NSDictionary *userInfo = t.user;
+              NSDictionary *userInfo = (NSDictionary *)t.user;
               currentTweetUser = [MTLJSONAdapter modelOfClass: User.class fromJSONDictionary: userInfo error: &error];
               t.user = currentTweetUser;
               
@@ -118,12 +155,12 @@
               if (t.orignalTweet) {
                   Tweet *ot = [[Tweet alloc]init];
                   NSDictionary *currTweet = [[NSDictionary alloc]init];
-                    currTweet = t.orignalTweet;
+                    currTweet = (NSDictionary *)t.orignalTweet;
                   ot = [MTLJSONAdapter modelOfClass: Tweet.class fromJSONDictionary: currTweet error: &error];
                   
                   //extract the user info from the tweet
                   User* currentTweetUser = [[User alloc] init];
-                  NSDictionary *userInfo = ot.user;
+                  NSDictionary *userInfo = (NSDictionary *)ot.user;
                   currentTweetUser = [MTLJSONAdapter modelOfClass: User.class fromJSONDictionary: userInfo error: &error];
                   ot.user = currentTweetUser;
                   t.orignalTweet = ot;
@@ -167,12 +204,10 @@
     NSString* resource;
     if (!tweet.favorited) {
         resource = @"1.1/favorites/destroy.json";
-//        tweet.favorited = NO;
-//        tweet.favoriteCount--;
+
     } else {
         resource = @"1.1/favorites/create.json";
-//        tweet.favorited = YES;
-//        tweet.favoriteCount++;
+
     }
     
     NSNumberFormatter * tId = [[NSNumberFormatter alloc] init];
@@ -184,11 +219,10 @@
     
     [self POST:resource parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *response = (NSDictionary*) responseObject;
-            //            NSLog(@"%@", response);
-         //   Tweet *tweet = [[Tweet alloc] initWithDictionary:response];
+            
             if (success) success(tweet);
-        } else {
+        }
+        else {
             if (failure) failure([NSError errorWithDomain:@"Post Tweet" code:400 userInfo:nil]);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

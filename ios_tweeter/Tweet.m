@@ -17,7 +17,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey{
     return @{
             // @"tweetId": @"id",
-             @"idStr": @"id_str",  // TODO commenting for now .. lets see if we need tweet id later. App crashes here. try using id_str if using
+             @"idStr": @"id_str",  
              @"retweetCount": @"retweet_count",
              @"favoriteCount": @"favorite_count",
              @"text": @"text",

@@ -11,6 +11,7 @@
 
 static int TweetLength = 140;
 static NSString *replyNotification = @"replyTweet";
+static NSString *newTweetNotification = @"newTweet";
 
 @interface ComposeViewController ()
 @property (nonatomic,assign) unsigned long textCount;
@@ -40,7 +41,7 @@ static NSString *replyNotification = @"replyTweet";
          NSLog (@"Notification is successfully received! %@",replyTo);
         self.tweetTextView.text = [NSString stringWithFormat:@"@%@",replyTo];
         self.textCount = self.tweetTextView.text.length;
-        self.textCountLabel.text = [NSString stringWithFormat:@"%ld",TweetLength-self.tweetTextView.text.length];
+        self.textCountLabel.text = [NSString stringWithFormat:@"%d",TweetLength-self.tweetTextView.text.length];
     }
 }
 
@@ -83,14 +84,29 @@ static NSString *replyNotification = @"replyTweet";
     if(self.tweetTextView.text.length >0){
         TwitterClient *client = [TwitterClient instance];
         NSDictionary *parameters = [[NSDictionary alloc]initWithObjectsAndKeys:self.tweetTextView.text,@"status", nil];
-        [client postTweetWithSuccess:parameters sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"tweet posted ");
+        
+        [client postTweet:parameters success:^(Tweet *tweet) {
+            NSLog(@"tweet posted %@ -- %@",tweet.text,tweet.user.screenName);
+            
+            
+            // Send tweet object via NSNC of new tweet posted and the update the TableView locally 
+            NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+            [userInfo setObject:tweet forKey:@"newTweet"];
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:newTweetNotification
+             object:self userInfo:userInfo];
+            
+            
             [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        } failure:^(NSError *error) {
             NSLog(@"Tweet post failed %@",error.description);
+
         }];
+
         
     }
+        
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Tweet Posted" object:self];
     
 }

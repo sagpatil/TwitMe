@@ -17,6 +17,7 @@
 
 static NSString *clickNotification = @"showDetail";
 static NSString *replyNotification = @"replyTweet";
+static NSString *newTweetNotification = @"newTweet";
 
 @interface ListViewController ()
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
@@ -64,18 +65,29 @@ TweetCell * _stubCell;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+       
         NSLog(@"Init");
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(tweetNotificationReceived:)
+                                                     name:newTweetNotification
+                                                   object:nil];
+        
+
     }
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    NSLog(@"View Did Appear %d",animated);
-}
 
-- (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"View will Appear %d",animated);
+// Get Notification of new tweet posted and the update the TableView locally 
+- (void) tweetNotificationReceived:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:newTweetNotification]){
+        NSDictionary* userInfo = notification.userInfo;
+        Tweet *newTweet = [userInfo objectForKey:@"newTweet"];
+        NSLog (@"Notification is successfully received! %@",newTweet.text);
+        [self.tweets insertObject:newTweet atIndex:0];
+        [self.tabelView reloadData];
+    }
 }
 - (void)viewDidLoad
 {
@@ -120,7 +132,7 @@ TweetCell * _stubCell;
                             success:^(NSArray *tweets) {
                                 self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
                                 [self.tabelView reloadData];
-                                NSLog(@"Success Loading tweets %ld",tweets.count);
+                                NSLog(@"Success Loading tweets %d",tweets.count);
                                 
                             } failure:^(NSError *error) {
                                 NSLog(@"Falied timeline loading");
@@ -136,7 +148,7 @@ TweetCell * _stubCell;
     [client homeTimelineWithSuccess:param success:^(NSArray *tweets) {
         [self.tweets addObjectsFromArray:tweets];
         [self.tabelView reloadData];
-        NSLog(@"Success Loading tweets %ld",tweets.count);
+        NSLog(@"Success Loading tweets %d",tweets.count);
 
     } failure:^(NSError *error) {
         NSLog(@"Falied timeline loading");
@@ -163,7 +175,7 @@ TweetCell * _stubCell;
         NSLog(@" %@",tweet.text);
     }
     
-    NSLog(@"\n for %ld Calc Height :%f  -- %f ",indexPath.row, textRect.size.height,additionalHeight);
+    NSLog(@"\n for %d Calc Height :%f  -- %f ",indexPath.row, textRect.size.height,additionalHeight);
     return 60 + additionalHeight+ textRect.size.height;
 }
 
@@ -249,8 +261,6 @@ TweetCell * _stubCell;
     [[NSNotificationCenter defaultCenter]
      postNotificationName:replyNotification
      object:self userInfo:userInfo];
-
- 
    
 }
 

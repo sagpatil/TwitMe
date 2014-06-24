@@ -65,6 +65,19 @@ static NSString *replyNotification = @"replyTweet";
     
     
     Tweet *tweet = self.tweet;
+
+    
+    // in Case of retweeted set orignal tweet as the tweet to display data
+    if (tweet.orignalTweet) {
+        self.retweetedByLabel.text = [NSString stringWithFormat:@"%@ retweeted",  tweet.user.name];
+        self.retweetedByHeight.constant = 15 ;
+        tweet = self.tweet.orignalTweet;
+    }
+    else{
+        
+        self.retweetedByHeight.constant = 0 ;
+        
+    }
     
     if (tweet.favorited) {
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_on"] forState:UIControlStateNormal];
@@ -77,19 +90,6 @@ static NSString *replyNotification = @"replyTweet";
     } else {
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet_default"] forState:UIControlStateNormal];
     }
-    
-    // in Case of retweeted
-    if (tweet.orignalTweet) {
-        self.retweetedByLabel.text = [NSString stringWithFormat:@"%@ retweeted",  tweet.user.name];
-        self.retweetedByHeight.constant = 15 ;
-        tweet = self.tweet.orignalTweet;
-    }
-    else{
-        
-        self.retweetedByHeight.constant = 0 ;
-        
-    }
-    
     
     self.tweetTextLabel.text = tweet.text;
     self.profileNameLabel.text = tweet.user.name;
@@ -138,20 +138,32 @@ static NSString *replyNotification = @"replyTweet";
 
 - (IBAction)onRetweetButtonClicked:(id)sender {
     Tweet *tweet = self.tweet;
-    // in Case of retweeted
+    // in Case of retweeted tweet
     if (self.tweet.orignalTweet) {
         tweet = self.tweet.orignalTweet;
     }
     //toggle the state and button images
     if (tweet.retweeted) {
-        [self.retweetButton setImage:[UIImage imageNamed:@"retweet_default"] forState:UIControlStateNormal];
-         tweet.retweetCount--;
+//        [self.retweetButton setImage:[UIImage imageNamed:@"retweet_default"] forState:UIControlStateNormal];
+//         tweet.retweetCount--;
+        
+        if (tweet.retweeted) {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"Undo a Retweet not implemented yet"
+                                  message:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+            return;
+        }
+        
     } else {
         [self retweetMe];
          tweet.retweetCount++;
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
     }
-    self.tweet.retweeted = !self.tweet.retweeted;
+    tweet.retweeted = !tweet.retweeted;
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld RETWEETS",(long)tweet.retweetCount];
     //[self refreshView];
     
@@ -194,6 +206,7 @@ static NSString *replyNotification = @"replyTweet";
 }
 
 -(void) retweetMe{
+  
     
     TwitterClient *client = [TwitterClient instance];
    [client retweet:self.tweet success:^(Tweet *tweet) {
@@ -203,13 +216,6 @@ static NSString *replyNotification = @"replyTweet";
        NSLog(@"retweet BAd %@",error.description);
    }];
     
-    
-//        self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
-//        NSLog(@"Success Loading tweets %ld",tweets.count);
-//        [self.tabelView reloadData];
-//    } failure:^(NSError *error) {
-//        NSLog(@"Falied timeline loading");
-//    }];
     
 }
 @end

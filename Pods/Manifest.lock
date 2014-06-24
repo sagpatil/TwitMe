@@ -26,7 +26,6 @@ PODS:
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
   - MBProgressHUD (0.8)
-  - SVProgressHUD (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.0)
@@ -34,7 +33,6 @@ DEPENDENCIES:
   - DateTools
   - Mantle
   - MBProgressHUD (~> 0.8)
-  - SVProgressHUD (= 0.8)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
@@ -42,6 +40,5 @@ SPEC CHECKSUMS:
   DateTools: aa3131160337433a152c0228a2a1be2ff4ed3e05
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
-  SVProgressHUD: 008dcc8b49227a39febcdb68e71d1d5a0f613e5f
 
 COCOAPODS: 0.33.1
