@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360 -->
+<html class="not-ie " lang="en"><script>var urchinTracker=function(){},_gaq={push:function(){try {if(arguments[0][0]=='_link')window.location.href=arguments[0][1]}catch(er){}}},_gat={_createTracker:function(){}, _getTracker:function(){return{__noSuchMethod__:function(){},_link:function(o){if(o)location.href=o;},_linkByPost:function(){return true;},_getLinkerUrl:function(o){return o;},_trackEvent:function(){}}}};</script><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Week 3: Twitter App Client</title>
+  <noscript> &lt;h1&gt;You need to have javascript enabled in order to access this site.&lt;/h1&gt; </noscript>
+  <!--[if lte IE 8]> <meta http-equiv=refresh content="0; URL=/ie-8-is-not-supported.html" /> <![endif]-->
+
+  
+  <link href="./Week 3  Twitter App Client_files/vendor_legacy_normal_contrast.css" media="all" rel="stylesheet" type="text/css">
+<link href="./Week 3  Twitter App Client_files/common_legacy_normal_contrast.css" media="all" rel="stylesheet" type="text/css">
+  
+  <meta content="app-id=480883488" name="apple-itunes-app">
+  <link href="./Week 3  Twitter App Client_files/assignments_legacy_normal_contrast.css" media="all" rel="stylesheet" type="text/css">
+<link href="./Week 3  Twitter App Client_files/learning_outcomes_legacy_normal_contrast.css" media="all" rel="stylesheet" type="text/css">
+  
+  
+  <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script>
+    // listen for any clicks on links that have href="#" and queue them to be fired on dom ready.
+      function _earlyClick(e){
+        var cur = e.target || e.srcElement;
+        while ( cur && cur.ownerDocument ) {
+          if ( cur.getAttribute('href') == '#' ) {
+            e.preventDefault();
+            _earlyClick.clicks = _earlyClick.clicks || [];
+            _earlyClick.clicks.push(cur);
+            break;
+          }
+          cur = cur.parentNode;
+        }
+      }
+      document.addEventListener('click', _earlyClick);
+  </script>
+<style></style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="compiled/tinymce" src="./Week 3  Twitter App Client_files/tinymce.js"></script><style>@-webkit-keyframes popbzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb {50% {-webkit-transform:scale(1.2);}100% {-webkit-transform:scale(1);}}@keyframes popbzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb {50% {-webkit-transform:scale(1.2);transform:scale(1.2);}100% {-webkit-transform:scale(1);transform:scale(1);}}#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;border:solid 2px #fff !important;box-sizing:content-box !important;color:#fff !important;display:block !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-webkit-border-radius:5px !important;-webkit-box-shadow:0px 0px 20px #000 !important;-webkit-box-sizing:content-box !important;}.bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb-blocked{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;color:#AAA !important;display:inline !important;text-decoration:line-through !important;}#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb br{display:block !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;}#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb span{background:transparent !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;}#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb div{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;border:0 !important;margin:0 !important;padding:0 !important;width:auto !important;letter-spacing:normal !important;font:13px Arial,Helvetica !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;word-spacing:normal !important;}#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb a{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;font-weight:normal !important;background:none !important;text-decoration:underline !important;color:#fff !important;}a#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb-gear{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;text-decoration:none !important;position:absolute !important;display:none !important;font-size:20px !important;width:20px !important;height:20px !important;line-height:20px !important;text-align:center !important;background-color:rgba(255,255,255,.8) !important;background-image:url(chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/data/images/gear.svg) !important;background-size:16px 16px !important;background-position:center center !important;background-repeat:no-repeat !important;text-decoration:none !important;}a#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb-gear:hover{-webkit-animation-name:popbzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb !important;animation-name:popbzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb !important;-webkit-animation-duration:0.3s !important;animation-duration:0.3s !important;}#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb:hover #bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb-gear{text-decoration:none !important;display:inline-block !important;}@media print{#bzyzhtorspwdztpdjorhjthsmemfgvifptleuezkkpgb{display:none !important;}}</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="vendor/timezone/America/Denver" src="./Week 3  Twitter App Client_files/Denver.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="vendor/timezone/en_US" src="./Week 3  Twitter App Client_files/en_US.js"></script><style>/* From: PaginatedView */
+.paginatedView-loading{text-align:center;color:#e9e9e9;font-size:26px;background:url("/images/load.gif") no-repeat 50% 80%;padding-bottom:56px}
+</style></head>
+<body class="with-left-side with-right-side assignments context-course_818130 webkit chrome no-touch ezLinkPreviewPARENT">
+
+
+<ul id="flash_message_buffer" aria-hidden="true">
+  
+</ul>
+<ul id="flash_message_holder">
+  
+</ul>
+<div id="flash_screenreader_holder" class="screenreader-only" role="alert">
+</div>
+
+
+<div id="header" class="no-print ">
+  <div id="header-inner">
+    <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#content" id="skip_navigation_link">Skip To Content</a>
+    <a id="header-logo" href="https://canvas.instructure.com/">My Dashboard</a>
+    <b id="header-logo-secondary"></b>
+    <div id="topbar">
+          <ul id="identity">
+      <li class="user_name"><a href="https://canvas.instructure.com/about/3940703">psagar001@gmail.com</a></li>
+      <li class="first inbox"><a href="https://canvas.instructure.com/conversations?"><span>Inbox</span>
+      </a></li>
+    <li><a href="https://canvas.instructure.com/profile/settings">Settings</a></li>
+    <li class="user_id" style="display: none;">3940703</li>
+    <li class="course_id" style="display: none;">818130</li>
+    <li id="current_context_code" style="display: none;">course_818130</li>
+    <li class="user_long_name" style="display: none;">psagar001@gmail.com</li>
+    <li class="logout"><a href="https://canvas.instructure.com/logout" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var m = document.createElement(&#39;input&#39;); m.setAttribute(&#39;type&#39;, &#39;hidden&#39;); m.setAttribute(&#39;name&#39;, &#39;_method&#39;); m.setAttribute(&#39;value&#39;, &#39;delete&#39;); f.appendChild(m);var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;ekZkSAv1YsPKPag0wZ+LuztwcMs1/+ZGdelj0wg0JPqzHa3nWhORmx6+fQWNl7Ju54rw2OofB1GPT+KIluJ1Iw==&#39;); f.appendChild(s);f.submit();return false;">Logout</a></li>
+    <li id="identity-help-container"><a href="http://help.instructure.com/" class="support_url help_dialog_trigger" data-track-category="help system" data-track-label="help button">Help</a></li>
+</ul>
+
+    </div>
+    
+    <ul role="navigation" id="menu" aria-label="Main Navigation">
+      <li id="courses_menu_item" class="menu-item">
+          <a href="https://canvas.instructure.com/courses" class="menu-item-title">
+  Courses  <span class="menu-item-title-icon"></span> <i class="icon-mini-arrow-down"></i></a>
+<div class="menu-item-drop">
+  <table cellspacing="0">
+    <tbody><tr>
+      <td class="menu-item-drop-column" id="menu_enrollments">
+  <span class="menu-item-heading">
+    My Courses
+  </span>
+  <div class="menu-item-customize">
+    <a class="customListOpen" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#">Customize</a>
+  </div>
+  <ul class="menu-item-drop-column-list">
+    <li class="customListItem" data-id="818130">
+  <a href="https://canvas.instructure.com/courses/818130">
+    <span class="name ellipsis" title="iOS Evening Bootcamp - iOS Evening Bootcamp">iOS Evening Bootcamp</span>
+      <span class="subtitle ellipsis enrollment_term menu-item-drop-float-right"></span>
+    <span class="subtitle ellipsis">Enrolled as: Student</span>
+  </a>
+</li>
+
+    <li class="menu-item-view-all"><a href="https://canvas.instructure.com/courses">View all courses (1)</a></li>
+  </ul>
+</td>
+
+      
+
+      
+
+    </tr>
+  </tbody></table>
+</div>
+
+      </li>
+      <li id="assignments_menu_item" class="menu-item">
+        <a href="https://canvas.instructure.com/assignments" class="menu-item-no-drop">Assignments</a>
+      </li>
+      <li id="grades_menu_item" class="menu-item">
+        <a href="https://canvas.instructure.com/grades" class="menu-item-no-drop">Grades</a>
+      </li>
+      <li id="calendar_menu_item" class="menu-item">
+        <a href="https://canvas.instructure.com/calendar" class="menu-item-no-drop">Calendar</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="instructure_ajax_error_box">
+  <div style="text-align: right; background-color: #fff;"><a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="close_instructure_ajax_error_box_link">Close</a></div>
+  <iframe id="instructure_ajax_error_result" src="about:blank" style="border: 0;"></iframe>
+</div>
+
+
+
+<div id="wrapper-container">
+  <div id="wrapper">
+      <div id="left-side" class="list-view">
+          <div class="h1" id="section-tabs-header">
+            iOS Evening Bootcamp
+          </div>
+        <nav role="navigation" aria-label="context"><ul id="section-tabs"><li class="section "><a href="https://canvas.instructure.com/courses/818130" class="home">Home</a></li><li class="section "><a href="https://canvas.instructure.com/courses/818130/modules" class="modules">Modules</a></li><li class="section "><a href="https://canvas.instructure.com/courses/818130/discussion_topics" class="discussions">Discussions</a></li><li class="section "><a href="https://canvas.instructure.com/courses/818130/wiki" class="pages">Pages</a></li><li class="section "><a href="https://canvas.instructure.com/courses/818130/users" class="people">People</a></li></ul></nav>
+    </div>
+    <div id="main" style="min-height: 450px;">
+      <div id="not_right_side">
+        <div id="content-wrapper">
+          <nav aria-label="breadcrumbs" id="breadcrumbs" role="navigation"><ul><li class="home"><a href="https://canvas.instructure.com/"><span class="ellipsible">      <i class="icon-home standalone-icon" title="My Dashboard">
+        <span class="screenreader-only">My Dashboard</span>
+      </i>
+</span></a></li><li><a href="https://canvas.instructure.com/courses/818130"><span class="ellipsible">iOS Evening Bootcamp</span></a></li><li><a href="https://canvas.instructure.com/courses/818130/assignments"><span class="ellipsible">Assignments</span></a></li><li><a href="https://canvas.instructure.com/courses/818130/assignments/2448287"><span class="ellipsible">Week 3: Twitter App Client</span></a></li></ul></nav>
+	  <div id="right-side-wrapper">
+	    <aside id="right-side" role="complementary">
+	      <div id="sidebar_content">
+
+
+</div>
+
+	    </aside>
+	  </div>
+          <div id="content" role="main" class="container-fluid">
+            
+
+
+
+<div id="assignment_show" class="assignment content_underline_links">
+    <!--Student View-->
+    <h2 class="title">
+      Week 3: Twitter App Client
+    </h2>
+    <ul class="student-assignment-overview">
+      <li>
+        <span class="title">Due</span>
+        <span class="value">
+            No Due Date
+        </span>
+      </li>
+      <li>
+        <span class="title">Points</span>
+        <span class="value">None</span>
+      </li>
+      <div class="clear"></div>
+    </ul>
+
+  <div class="clear"></div>
+
+
+  <div class="clear"></div>
+
+  <div class="description user_content student-version enhanced"><p class="normal"><span style="font-family: Arial;"><span style="font-size: medium;"><span style="color: #000000;"><strong>Overview</strong>: Build a simple Twitter client that supports viewing a Twitter timeline and composing a new tweet.</span></span></span></p>
+<p><span style="font-size: medium;"><strong>Submitting Assignments:&nbsp;</strong></span><span style="font-size: medium;">Assignments are&nbsp;</span><a style="font-size: medium;" href="https://canvas.instructure.com/courses/818130/wiki/submitting-assignments">submitted through Github</a><span style="font-size: medium;">&nbsp;using Git, check out the&nbsp;</span><a style="font-size: medium;" href="https://canvas.instructure.com/courses/818130/wiki/submitting-assignments">Submitting Assignments</a><span style="font-size: medium;">&nbsp;page for more details. &nbsp;&nbsp;</span></p>
+<p class="normal"><span style="font-family: Arial;"><span style="font-size: medium;"><span style="color: #000000;"><strong>User Stories</strong>:</span></span></span></p>
+<ul>
+<li>
+<div class="normal"><span style="color: #000000; font-family: Arial; font-size: medium;">User can sign in using OAuth login flow</span></div>
+</li>
+<li>
+<div class="normal"><span style="color: #000000; font-family: Arial; font-size: medium;">User can view last 20 tweets from their home timeline</span></div>
+</li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">The current signed in user will be persisted across restarts</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp. &nbsp;In other words, design the custom cell with the proper Auto Layout settings. &nbsp;You will also need to augment the model classes.</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">User can pull to refresh</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">User can compose a new tweet by tapping on a compose button.</span></li>
+<li>
+<div class="normal"><span style="color: #000000; font-family: Arial; font-size: medium;">User can tap on a tweet to view it, with controls to retweet, favorite, and reply.</span></div>
+</li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">Optional: When composing, you should have a countdown in the upper right for the tweet limit.</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">Optional: Retweeting and favoriting should increment the retweet and favorite count.</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">Optional: User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">Optional: Replies should be prefixed with the username and the reply_id should be set when posting the tweet,</span></li>
+<li><span style="color: #000000; font-family: Arial; font-size: medium;">Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.</span></li>
+</ul><p class="normal"><span style="font-family: Arial;"><span style="font-size: medium;"><span style="color: #000000;"><strong>References For This Assignment</strong>:</span></span></span></p>
+<ul>
+<li><span style="font-size: medium;">Free iOS icons:&nbsp;http://www.glyphish.com/</span></li>
+</ul><p><span style="font-family: Arial; font-size: medium;"><strong>Mockups:</strong></span></p>
+<ul>
+<li><span style="font-family: Arial; font-size: medium;">Timeline view.<br><img src="./Week 3  Twitter App Client_files/preview" alt="twitter_timeline.png" width="434" height="616" style="max-width: 776px;"><br></span></li>
+<li><span style="font-family: Arial; font-size: medium;">Tweet view.<br><img src="./Week 3  Twitter App Client_files/preview(1)" alt="twitter_tweet.png" width="434" height="616" style="max-width: 776px;"><br></span></li>
+<li><span style="font-family: Arial; font-size: medium;">Compose view<br><img src="./Week 3  Twitter App Client_files/preview(2)" alt="twitter_compose.png" style="max-width: 776px;"><br></span></li>
+</ul></div>
+
+
+  <div style="display: none;">
+    <span class="timestamp">0</span>
+    <span class="due_date_string"></span>
+    <span class="due_time_string"></span>
+  </div>
+</div>
+
+
+
+
+
+<div id="rubrics" style="margin-bottom: 10px;">
+  <div style="display: none;" id="rubric_parameters">
+    <input type="hidden" name="rubric_association[association_type]" value="Assignment">
+    <input type="hidden" name="rubric_association[association_id]" value="2448287">
+    <input type="hidden" name="rubric_association[purpose]" value="grading">
+  </div>
+  <div id="rubric_long_description_dialog" style="display: none;">
+  <div class="description" style="border-bottom: 1px solid #ccc; padding: 5px 0; font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">
+  </div>
+  <div class="editing">
+    <textarea class="long_description" name="long_description" style="width: 370px;"></textarea>
+    <div class="button-container">
+      <button type="button" class="btn save_button">Update Description</button>
+      <button type="button" class="btn btn button-secondary cancel_button">Cancel</button>
+    </div>
+  </div>
+  <div class="displaying">
+    <div class="long_description">
+    </div>
+  </div>
+</div>
+<div id="rubric_criterion_comments_dialog" style="display: none;">
+  <div class="criterion_description" style="border-bottom: 1px solid #ccc; padding: 5px 0; font-size: 1.2em; font-weight: bold; margin-bottom: 5px;" tabindex="-1"></div>
+  <div class="editing">
+    <label for="criterion_comments_textarea">
+      Additional Comments:
+    </label>
+    <textarea id="criterion_comments_textarea" class="criterion_comments" name="criterion_comments" style="width: 370px;"></textarea>
+    <div class="button-container">
+      <button type="button" class="btn save_button">Update Comments</button>
+      <button type="button" class="btn btn button-secondary cancel_button">Cancel</button>
+    </div>
+  </div>
+  <div class="displaying">
+    Additional Comments:
+    <div class="criterion_comments" style="margin-top: 10px;">
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="rubric_container rubric  " id="default_rubric" style="display: none;" tabindex="0">
+  <div class="screenreader-only"><h3>Rubric</h3></div>
+  <div class="rubric_title">
+    <div style="float: right; display: none;" class="links displaying">
+      <a href="https://canvas.instructure.com/courses/818130/rubrics/%7B%7B%20id%20%7D%7D" class=" edit_rubric_link no-print no-hover" style="" title="Edit Rubric" aria-label="Edit Rubric" role="button"><i class="icon-edit standalone-icon"></i></a>
+      <a href="https://canvas.instructure.com/search/rubrics?q=" class="find_rubric_link no-print no-hover" style="" title="Find Another Rubric" aria-label="Find Another Rubric" role="button"><i class="icon-search standalone-icon"></i></a>
+        <a href="https://canvas.instructure.com/courses/818130/rubric_associations/%7B%7B%20rubric_association_id%20%7D%7D" class="delete_rubric_link no-print no-hover" style="" title="Delete Rubric" aria-label="Delete Rubric" role="button"><i class="icon-trash standalone-icon"></i></a>
+      <div style="display: none;">
+        <div class="use_for_grading">&nbsp;</div>
+        <div class="free_form_criterion_comments">&nbsp;</div>
+        <div class="hide_score_total">&nbsp;</div>
+        <div class="rubric_association_id">&nbsp;</div>
+        <div class="user_id">&nbsp;</div>
+        <div class="assessment_type"></div>
+        <a href="https://canvas.instructure.com/courses/818130/rubric_associations/%7B%7B%20rubric_association_id%20%7D%7D/assessments/%7B%7B%20assessment_id%20%7D%7D" rel="nofollow" class="edit_assessment_link">&nbsp;</a>
+        <a href="https://canvas.instructure.com/courses/818130/rubrics/%7B%7B%20rubric_id%20%7D%7D" class="edit_rubric_url">&nbsp;</a>
+          <a href="https://canvas.instructure.com/courses/818130/rubric_associations/%7B%7B%20association_id%20%7D%7D" class="delete_rubric_url">&nbsp;</a>
+      </div>
+    </div>
+    <div style="float: right; font-size: 0.8em; display: none;" class="links displaying locked">
+      <span style="">Can't change a rubric once you've started using it.</span>
+        <a href="https://canvas.instructure.com/courses/818130/rubric_associations/%7B%7B%20association_id%20%7D%7D" class="delete_rubric_url" style="display: none;">&nbsp;</a>
+    </div>
+
+    <div class="editing" style="float: right;">
+      <a href="https://canvas.instructure.com/search/rubrics?q=" class="find_rubric_link icon-search" style="" title="Find Existing Rubric">Find a Rubric</a>
+    </div>
+    <div class="editing" style="text-align: left">
+      Title:
+      <input type="text" class="no-margin-bottom" name="title" value="Some Rubric" style="width: 200px;" maxlength="255">
+      <a href="https://canvas.instructure.com/search/rubrics?q=" style="display: none;"><img alt="Find" src="./Week 3  Twitter App Client_files/find.png"> Find Rubric</a>
+    </div>
+    <div class="displaying">
+      <span class="title" tabindex="-1">Title</span>
+    </div>
+    <div class="has-assessments-warning" style="display: none;">
+      You've already rated students with this rubric.  Any major changes could affect their assessment results.
+    </div>
+  </div>
+<table class="rubric_table">
+<caption>
+  <div class="screenreader-only">
+    <span class="title">Title</span>
+  </div>
+</caption>
+<thead>
+  <tr>
+    <th>Criteria</th>
+    <th>Ratings</th>
+    <th>Pts</th>
+    <th class="editing">&nbsp;</th>
+  </tr>
+</thead>
+<tbody>
+  
+
+<tr id="criterion_blank" class="criterion blank  " style="display: none;">
+  <td class="criterion_description hover-container">
+    <div class="container">
+      <div class="links editing">
+        <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="edit_criterion_link hide-till-hover"><i class="icon-edit standalone-icon"></i></a>
+      </div>
+      <img alt="Flagged_question" class="learning_outcome_flag" src="./Week 3  Twitter App Client_files/flagged_question.png" title="This criterion is linked to a Learning Outcome">
+      <span class="description criterion_description_value">Description of criterion</span>
+      <span class="learning_outcome_id" style="display: none;"></span>
+      <span class="criterion_id" style="display: none;"></span>
+      <div class="long_description_holder editing empty">
+        <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="long_description_link">view longer description</a>
+        <textarea class="long_description" style="display: none;"></textarea>
+      </div>
+      <div class="threshold">
+        threshold:
+        <span class="mastery_points">5</span> pts
+      </div>
+    </div>
+  </td>
+  <td style="padding: 0;">
+      <table class="ratings" style=""><tbody><tr>
+          <td id="rating_blank" class="rating edge_rating">
+          <div class="container">
+            <div class="description rating_description_value">Full Marks</div>
+            <span class="nobr"><span class="points">5</span> pts</span>
+            <span class="rating_id" style="display: none;">blank</span>
+            <div class="links">
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="edit_rating_link no-hover"><i class="icon-edit standalone-icon"></i></a>
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="delete_rating_link no-hover"><i class="icon-end standalone-icon"></i></a>
+            </div>
+          </div>
+          </td>
+          <td id="rating_blank_2" class="rating edge_rating">
+          <div class="container">
+            <div class="description rating_description_value">No Marks</div>
+            <span class="nobr"><span class="points">0</span> pts</span>
+            <span class="rating_id" style="display: none;">blank_2</span>
+            <div class="links">
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="edit_rating_link no-hover"><i class="icon-edit standalone-icon"></i></a>
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="delete_rating_link no-hover"><i class="icon-end standalone-icon"></i></a>
+            </div>
+          </div>
+          </td>
+      </tr></tbody></table>
+      <div style="display: none; font-style: italic; font-size: 0.8em; margin: 5px;" class="custom_ratings">
+        This area will be used by the assessor to leave
+        comments related to this criterion.
+      </div>
+  </td>
+  <td class="nobr points_form">
+    <div class="editing" style="white-space: normal">
+      <span style="white-space: nowrap; font-size: 0.8em">
+          <input type="text" aria-label="Points" value="5" class="criterion_points span1 no-margin-bottom"> pts
+      </span><br>
+    </div>
+    <div class="displaying">
+      <span style="white-space: nowrap;">
+        <span class="criterion_rating_points_holder" style="display: none;">
+          <span class="criterion_rating_points">&nbsp;</span> /
+        </span>
+        <span class="display_criterion_points">5</span> pts<br>
+      </span>
+    </div>
+    <div class="ignoring">
+      <span> -- </span>
+    </div>
+    <div class="criterion_comments">
+        <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="no-hover criterion_comments_link" title="Additional Comments">
+          <img alt="Additional Comments" src="./Week 3  Twitter App Client_files/rubric_comment.png">
+        </a>
+        <div class="custom_rating" style="display: none;"></div>
+    </div>
+  </td>
+  <td class="editing">
+    <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="delete_criterion_link" title="Delete Criterion Row" role="button" aria-label="Delete Criterion Row"><i class="icon-end"></i></a>
+  </td>
+</tr>
+
+
+  <tr id="criterion_1" class="criterion" style="display: table-row;">
+  <td class="criterion_description hover-container">
+    <div class="container">
+      <div class="links editing">
+        <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="edit_criterion_link hide-till-hover"><i class="icon-edit standalone-icon"></i></a>
+      </div>
+      <img alt="Flagged_question" class="learning_outcome_flag" src="./Week 3  Twitter App Client_files/flagged_question.png" title="This criterion is linked to a Learning Outcome">
+      <span class="description criterion_description_value">Description of criterion</span>
+      <span class="learning_outcome_id" style="display: none;"></span>
+      <span class="criterion_id" style="display: none;"></span>
+      <div class="long_description_holder editing empty">
+        <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="long_description_link">view longer description</a>
+        <textarea class="long_description" style="display: none;"></textarea>
+      </div>
+      <div class="threshold">
+        threshold:
+        <span class="mastery_points">5</span> pts
+      </div>
+    </div>
+  </td>
+  <td style="padding: 0;">
+      <table class="ratings" style=""><tbody><tr>
+          <td id="rating_blank" class="rating edge_rating">
+          <div class="container">
+            <div class="description rating_description_value">Full Marks</div>
+            <span class="nobr"><span class="points">5</span> pts</span>
+            <span class="rating_id" style="display: none;">blank</span>
+            <div class="links">
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="edit_rating_link no-hover"><i class="icon-edit standalone-icon"></i></a>
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="delete_rating_link no-hover"><i class="icon-end standalone-icon"></i></a>
+            </div>
+          </div>
+          </td>
+          <td id="rating_blank_2" class="rating edge_rating">
+          <div class="container">
+            <div class="description rating_description_value">No Marks</div>
+            <span class="nobr"><span class="points">0</span> pts</span>
+            <span class="rating_id" style="display: none;">blank_2</span>
+            <div class="links">
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="edit_rating_link no-hover"><i class="icon-edit standalone-icon"></i></a>
+              <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="delete_rating_link no-hover"><i class="icon-end standalone-icon"></i></a>
+            </div>
+          </div>
+          </td>
+      </tr></tbody></table>
+      <div style="display: none; font-style: italic; font-size: 0.8em; margin: 5px;" class="custom_ratings">
+        This area will be used by the assessor to leave
+        comments related to this criterion.
+      </div>
+  </td>
+  <td class="nobr points_form">
+    <div class="editing" style="white-space: normal">
+      <span style="white-space: nowrap; font-size: 0.8em">
+          <input type="text" aria-label="Points" value="5" class="criterion_points span1 no-margin-bottom"> pts
+      </span><br>
+    </div>
+    <div class="displaying">
+      <span style="white-space: nowrap;">
+        <span class="criterion_rating_points_holder" style="display: none;">
+          <span class="criterion_rating_points">&nbsp;</span> /
+        </span>
+        <span class="display_criterion_points">5</span> pts<br>
+      </span>
+    </div>
+    <div class="ignoring">
+      <span> -- </span>
+    </div>
+    <div class="criterion_comments">
+        <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="no-hover criterion_comments_link" title="Additional Comments">
+          <img alt="Additional Comments" src="./Week 3  Twitter App Client_files/rubric_comment.png">
+        </a>
+        <div class="custom_rating" style="display: none;"></div>
+    </div>
+  </td>
+  <td class="editing">
+    <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="delete_criterion_link" title="Delete Criterion Row" role="button" aria-label="Delete Criterion Row"><i class="icon-end"></i></a>
+  </td>
+</tr><tr class="summary" style="">
+    <td colspan="4">
+      <div style="float: right;" class="total_points_holder">
+        <span style="padding-right: 10px;">Total Points:
+            <span class="rubric_total">5</span> <span class="assessing">out of 5</span>
+        </span>
+      </div>
+      <div style="float: left;" class="editing">
+      <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="icon-add add_criterion_link">Add Criterion</a>
+      &nbsp;&nbsp;<a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="icon-search find_outcome_link outcome">Find Outcome Criterion</a>
+      </div>
+      <div class="clear"></div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<table style="display: none;">
+  <tbody><tr id="edit_rubric">
+    <td colspan="4">
+      <form id="edit_rubric_form" class="edit-rubric-form no-margin-bottom">
+        <div class="rubric_custom_ratings" style="">
+          <input type="checkbox" id="rubric_custom_rating" class="rubric_custom_rating">
+          <label for="rubric_custom_rating">I'll write free-form comments when assessing students</label>
+        </div>
+          <div class="rubric_grading" style="">
+            <input type="checkbox" id="grading_rubric" class="grading_rubric_checkbox">
+            <label for="grading_rubric">Use this rubric for assignment grading</label>
+          </div>
+        <div class="totalling_rubric" style="">
+          <input type="checkbox" id="totalling_rubric" class="totalling_rubric_checkbox">
+          <label for="totalling_rubric">Hide score total for assessment results</label>
+        </div>
+        <div class="button-container">
+          <button type="button" class="btn btn-small cancel_button">Cancel</button>
+          <button type="submit" class="btn btn-small save_button btn-primary">Create Rubric</button>
+        </div>
+      </form>
+    </td>
+  </tr>
+</tbody></table>
+
+
+  <div id="sequence_footer" class="draft_state_enabled" data-course-id="818130" data-asset-id="2448287" data-asset-type="Assignment"><div class="module-sequence-padding"></div>
+<div class="module-sequence-footer clearfix">
+  <div class="module-sequence-footer-content">
+    
+      <a href="https://canvas.instructure.com/courses/818130/modules/items/5213359" role="button" class="pull-left" data-tooltip="" data-tooltip-title="&lt;i class=&#39;icon-download&#39;&gt;&lt;/i&gt; Chapter 3 - Networking and Persistence.pdf" aria-describedby="msf0-previous-desc">
+        <i class="icon-mini-arrow-left"></i>Previous
+        <span id="msf0-previous-desc" class="hidden" hidden="">Previous: Chapter 3 - Networking and Persistence.pdf</span>
+      </a>
+    
+
+    
+      <a href="https://canvas.instructure.com/courses/818130/modules/items/5213357" role="button" class="pull-right bordered" data-tooltip="" data-tooltip-title="&lt;i class=&#39;icon-assignment&#39;&gt;&lt;/i&gt; Group Milestone 2: Wireframes" aria-describedby="msf0-next-desc">
+        Next<i class="icon-mini-arrow-right"></i>
+        <span id="msf0-next-desc" class="hidden" hidden="">Next: Group Milestone 2: Wireframes</span>
+      </a>
+    
+  </div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo" id="footer">
+      <a href="http://www.instructure.com/" class="footer-logo">
+        <span class="screenreader-only">
+          Instructure, makers of the open source learning management system Canvas
+        </span>
+      </a>
+      <span id="footer-links">
+        <a href="http://help.instructure.com/" class="support_url help_dialog_trigger" data-track-category="help system" data-track-label="help button">Help</a>
+        <a href="http://www.instructure.com/policies/privacy-policy-instructure">Privacy policy</a>
+<a href="http://www.instructure.com/policies/terms-of-use-fft">Terms of service</a>
+<a href="http://facebook.com/instructure">Facebook</a>
+<a href="http://twitter.com/instructure">Twitter</a>
+
+      </span>
+    </footer>
+  </div>
+</div>
+
+
+
+  <div style="display:none;"><!-- Everything inside of this should always stay hidden -->
+    <div id="ajax_authenticity_token">3crNoh4gy9gFtqFn71QrZsYCbA1HA3KaqPbS2L5QBEIUkQQNT8Y4gNE1dFajXBKzGvjsHpjjk41SUFODIIZVmw==</div>
+      <a href="https://canvas.instructure.com/page_views/e1e02a20-dbfe-0131-31b5-0e9a0a15985d" id="page_view_update_path">&nbsp;</a>
+      <div id="page_view_id">e1e02a20-dbfe-0131-31b5-0e9a0a15985d</div>
+    <div id="domain_root_account_id">10</div>
+      <a id="equella_endpoint_url" href="http://oer.equella.com/signon.do">&nbsp;</a>
+      <a id="equella_callback_url" href="https://canvas.instructure.com/external_content/success/equella">&nbsp;</a>
+      <a id="equella_cancel_url" href="https://canvas.instructure.com/external_content/cancel/equella">&nbsp;</a>
+      <a id="equella_action" href="https://canvas.instructure.com/courses/818130/assignments/selectOrAdd">&nbsp;</a>
+        <div id="equella_teaser">Equella is a shared content repository that organizations can use to easily track and reuse content.  This OER repository is a collection of free resources provided by Equella.</div>
+  </div>
+  <div id="cant_record_dialog" style="display: none;">
+  <div>
+        In order to create video or audio recordings your computer needs to be 
+    webcam-enabled.  If you don't have a webcam on your computer, you can still
+    record audio-only messages by first installing the Google Video Chat
+    plugin.
+
+  </div>
+  <div style="text-align: center; font-size: 1.5em; margin: 10px;">
+    <a href="http://www.google.com/chat/video" target="_blank" class="btn">Install the Video Plugin</a>
+  </div>
+  <div class="links" style="text-align: right; font-size: 0.8em; display: none;">
+    <a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="cant_record_link">Don't have a webcam?</a>
+  </div>
+</div>
+<div id="aria_alerts" class="hide-text affix" role="alert" aria-live="assertive"></div>
+<script>
+  INST = {"environment":"production","allowMediaComments":true,"kalturaSettings":{"domain":"nv.instructuremedia.com","resource_domain":"nv.instructuremedia.com","rtmp_domain":"fms-prod.instructuremedia.com","partner_id":"3","subpartner_id":"0","player_ui_conf":"0","kcw_ui_conf":"0","upload_ui_conf":"0","max_file_size_bytes":534773760,"do_analytics":false,"use_alt_record_widget":true,"hide_rte_button":false,"js_uploader":true},"equellaEnabled":true,"googleAnalyticsAccount":"UA-9138420-1","enableScribdHtml5":true,"logPageViews":true,"maxVisibleEditorButtons":3,"editorButtons":[]};
+  ENV = {"current_user_id":"3940703","current_user":{"id":"3940703","display_name":"psagar001@gmail.com","avatar_image_url":"https://secure.gravatar.com/avatar/9a05d31a4120c32203d0685b7bda5449?s=50\u0026d=https%3A%2F%2Fcanvas.instructure.com%2Fimages%2Fmessages%2Favatar-50.png","html_url":"https://canvas.instructure.com/about/3940703"},"current_user_roles":["user","student"],"AUTHENTICITY_TOKEN":"e/swLUBMKL6/L7KTOig90gxlSfWMTzNLHFfyOmGdHrGyoPmCEarb5musZ6J2IAQH0J/J5lOv0lzm8XNh/0tPaA==","files_domain":"safefiles.instructure.com","badge_counts":{"submissions":0},"context_asset_string":"course_818130","TIMEZONE":"America/Denver","CONTEXT_TIMEZONE":"America/Denver","LOCALE":"en-US","ROOT_OUTCOME_GROUP":{"id":"206996","title":"iOS Evening Bootcamp","vendor_guid":null,"url":"/api/v1/courses/818130/outcome_groups/206996","subgroups_url":"/api/v1/courses/818130/outcome_groups/206996/subgroups","outcomes_url":"/api/v1/courses/818130/outcome_groups/206996/outcomes","can_edit":false,"import_url":"/api/v1/courses/818130/outcome_groups/206996/import","context_id":"818130","context_type":"Course","description":null},"DRAFT_STATE":true,"COURSE_ID":818130,"ASSIGNMENT_ID":2448287,"EXTERNAL_TOOLS":[]};
+
+  // TODO: move this out when we have a single require call
+  require = {
+    translate: true,
+    baseUrl: '/optimized',
+    paths: {
+    "common":"compiled/bundles/common",
+    "jqueryui":"vendor/jqueryui",
+    "uploadify":"../flash/uploadify/jquery.uploadify-3.1.min",
+    "ic-dialog":"vendor/ic-dialog/dist/main.amd",
+    "compiled/tinymce":"compiled/tinymce.js?v2",
+    "migration_tool":"plugins/migration_tool",
+    "instructure_misc_plugin":"plugins/instructure_misc_plugin",
+    "analytics":"plugins/analytics",
+    "multiple_root_accounts":"plugins/multiple_root_accounts",
+    "canvasnet_registration":"plugins/canvasnet_registration",
+    "demo_site":"plugins/demo_site",
+    "compiled/registration/main_without_extensions":"compiled/registration/main",
+    "compiled/registration/main":"compiled/registration/main_with_extensions",
+    "compiled/registration/signupDialog_without_extensions":"compiled/registration/signupDialog",
+    "compiled/registration/signupDialog":"compiled/registration/signupDialog_with_extensions",
+    "compiled/bundles/modules/account_quota_settings_without_extensions":"compiled/bundles/modules/account_quota_settings",
+    "compiled/bundles/modules/account_quota_settings":"compiled/bundles/modules/account_quota_settings_with_extensions"},
+    packages : [{"name":"ic-ajax","location":"bower/ic-ajax"},{"name":"ic-styled","location":"bower/ic-styled"},{"name":"ic-menu","location":"bower/ic-menu"},{"name":"ic-tabs","location":"bower/ic-tabs/dist/amd"},{"name":"ember-qunit","location":"bower/ember-qunit/dist/amd"}],
+    shim: {
+    'bower/ember/ember': {
+      deps: ['jquery', 'handlebars'],
+      exports: 'Ember'
+    },
+    'bower/ember-data/ember-data': {
+      deps: ['ember'],
+      exports: 'DS'
+    },
+    'bower/handlebars/handlebars.runtime': {
+      exports: 'Handlebars'
+    },
+    'vendor/FileAPI/FileAPI.min': {
+      deps: ['jquery', 'vendor/FileAPI/config'],
+      exports: 'FileAPI'
+    },
+    'uploadify': {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'vendor/bootstrap-select/bootstrap-select' : {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'vendor/jquery.jcrop': {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'handlebars': {
+      deps: ['bower/handlebars/handlebars.runtime.amd'],
+      exports: 'Handlebars'
+    }
+  }
+
+  };
+</script>
+
+<script src="./Week 3  Twitter App Client_files/require.js" type="text/javascript"></script>
+<script src="./Week 3  Twitter App Client_files/common.js" type="text/javascript"></script>
+<script src="./Week 3  Twitter App Client_files/assignment_show.js" type="text/javascript"></script>
+<script src="./Week 3  Twitter App Client_files/edit_rubric.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+          (function() {
+            var inject = function(src) {
+              var s = document.createElement('script');
+              s.src = src;
+              s.type = 'text/javascript';
+              document.body.appendChild(s);
+            };
+            var srcs = ["https://canvabadges.herokuapp.com/canvas_profile_badges.js"];
+            require(['jquery'], function() {
+              for (var i = 0, l = srcs.length; i < l; i++) {
+                inject(srcs[i]);
+              }
+            });
+          })();
+
+//]]>
+</script>
+
+
+
+<script>
+// Determines if the scripts are loaded.
+// When we get everything out of the views, and have a single top-level
+// `require`, this becomes meaningless and will be abandoned.
+(function() {
+  var attempts = 0;
+  var timeout = 10;
+  var check = function() {
+    attempts++;
+    var done = !window.requirejs.s.contexts._.defQueue.length
+    var giveup = attempts === 100; // 1 second
+    if (done || giveup) {
+      var className = document.documentElement.className;
+      document.documentElement.className = className.replace(/scripts-not-loaded/, '');
+      return;
+    }
+    setTimeout(check, timeout);
+  };
+
+  check();
+}).call(this);
+</script>
+
+
+
+<a class="hiddenlink" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" accesskey="t"></a><div id="ezLinkPreviewDIV" style="border-width: 0px; position: absolute; top: 10px; left: 10px; width: 16px; height: 16px; cursor: pointer; display: none;"></div><div id="ezLinkPreviewDIVSEARCH" style="border-width: 0px; position: absolute; top: 534px; left: 578px; z-index: 9999999; width: 45px; display: none;"><table cellpadding="0" cellspacing="0" id="ezSearchBarTABLE" style="background-color: #ffe; border: 2px solid #555; padding: 1px; z-index: 9999999; display: block; vertical-align:bottom;" class="ezui-corner-all"><tbody><tr style="padding: 0;"><td style="padding: 0; padding-right: 2px; "><img id="ezsb01" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiUlEQVQ4y33TTYhOYRQH8N+rdxDlrkQNC1JDHh/lYzMpC2UjSRYWo1jYyVLJo5RrIxsLi2GjDLMla9nMbizEzaR85pWduooyMa/NmbquO556es495/z/95zz/J+eJVZZ1eexFiVWYBSvcyoWmnn9FqiXUzEsq/owbob7AyZwEKcw1cT0GuBxTOMjbuBhhC7gClbhNq5hBO9yKobNCo5jY+yLGMNoTsXTsqrncQiD+ME8zuFOk2ASBzCHBZzFjrKqr+J5VHIkcpdjy18tNFo5iXvt+cS6hR+xJ3MqvvRa4KN4FJ9vcB0/o9x94T+TU3H3nyEGwSz24it25VQMwr8aL7EpiMcWr7PfAG8OMNxfBENOxfeyqh/gUvS+Fa/aOljXsOc6+n/bsNd3ETQVtqyDYKRh/+pS4ucI9LGzg2BPnEN8WmqIMxjHN+zOqXgf/m14FmqczanY3/kWcBlPsAYzZVVPRzsTAYbc+RYaVZwIIa1shX7jdE7F1H8JgmQ7jmFDuAZ4nFPxop37B9DQeG8bswRYAAAAAElFTkSuQmCC" title="Search Dogpile"></td><td style="padding: 0; padding-right: 2px; "><img id="ezsb02" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABIklEQVQ4jaWTIUzDUBCGvxJW04THBFWrGAZThSI0GNwcjjkccg4HDodDTqFIHRKFIjRgpoqYqihmM6MkNZ0Y4vLaLm1JWC95uZfL+7939+6dsXrcW9HCttqIAbYB6LrQUbBMYBFuADi8BfsY5gG8nG0AqDNTwa4r+z8yWwd0diSb3gAsp3r66xmmY5i/NQC6rqw0hvAOZoHELQf2hwLuDSDy4X3UUELkw+QGsqQa7w/h6F589gOT65o21onLkMiXff8c0P9AC9K4WawtjcWbqgTQj2I5YHvNYlNJ+iWQAKbjok0nD3BwWRXbHpw+ySVZAq8XABj5LJgK3KtCnCXw/Vlkptu6COFjlF9oVIbJcqRVtpfXmZc5C9b+QD3gn9Z6Gn8BcuVdnjGhH18AAAAASUVORK5CYII=" title="Search Bing"> </td><td style="padding: 0; padding-right: 0px; "><img id="ezsb03" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABeklEQVQ4jdWSPUtCYRTHf1fv6HAREQsTAydxkGqqIE2ChgoCl6Al6wM4NBVCIfgRWqRFmqJMwiEiX4IIF0Pk4pKYhJiEREgQhPE0yL1ludXSmQ6H8385L/DvQxJCAJCJFEWn2UFN1fsaXD47VreZQHRc0mrbxrjQclkDX++VBypU8w2NVHwl0Qk08OrRPKP+IQDucg+kwwVaaltvzMZufpC4fDYMj5UnAA6CZ5ys5wCoZZu01Da7ryF2X0OES0G6PFM5ve9Td0wOI1fzDb2gpuo4p2+ZiXjRiC+jJc5jWV5o0FB7fTaPRXcnf58pvXmFfcLCyvEcmUiRZCzxOS8KACZLDxaIjksGl8/+Y3HlwxpAH1hTBlCcJj2XrW5z3+k2LhYYmbLSfXtnp7RD+bBGMpZAwYN7yQHA8r5fX6QkhCATKYrval9DwcPs1pj+C9vGuHD5bKxlFiVZmwUQnWaHer5FtV7oWVa8Ax/J4jTx0u5+OvhNGH6F/guCDw2KlX2TeOe2AAAAAElFTkSuQmCC" title="Search Yahoo"> </td></tr><tr style="padding: 0;"><td style="padding: 0; padding-right: 2px; "><img id="ezsb04" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVQ4ja2Tv2saYRjHP0lBSqCYhECzNNNZhCJ2CMVB9I6TRIKQk6RdbhMzpOAeOpz5E/w/inJTMvSOZnApoZhrKKTlhdMhNFSveg7SwWCHkLexdSnpA+/wPjzfz/PrfefG1+MJ97D5+4j/D8B1XUzTpLBVwHVdAOpv6xS2CliWhRACAMuyME0TIQRCCCqVCqZpMq/rOolnCdqdtqTuvNwBoFFvABB0AxYeLqCpGoqisBRdAkBTtZsWdl/tEg5CbNsm6AYAGEWDcBDitTx83+fy2yXlvfJU+eW98g1AURQyaga7YeP7PgCqppJMJqkeVnEcBzWjSuHZpzN5l0MslUoAOI7DLdQoGoivgvPP57KtoBtw+uGUxeXFaYCu6ySTSZrNphycqqmkUinCfiiz98M+o58jdF2fBgCk02mcdw5ey5vqtd1pyw2dvD9h7cna7zXeDTx4c4DyVKFhNwi6AV7LI/E8wcryCrZtA9Dr9igaRal5YFWtw7uQYTik9bHF1fcrVh+vsm1sMxgOOD46JhKJMBqN2MhvzK4AIBaL0fvRk29AURSy2SwAtVqNXC43LRhfjyd/nvxmfpLfzE8uvlxI3/7r/Uk8Hv8rdm7Wb3Rdl+ijKOsv1qVPCEGn05HTv7WZgH+xX3yx7irlByjQAAAAAElFTkSuQmCC" title="Search Wikipedia"> </td><td style="padding: 0; padding-right: 4px; "><img id="ezsb05" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC3ElEQVQ4jVWTzW4bZRiFn/m+GXtm/DP22In8k6YNIalCyyYCVmwqISGExIYlK6ReABIqoN4CihD3wp2AAkFUVarEduOJnbFn7BnPz8vCKBW7cx6d5XkMSVaCUlAUoDUsl9BowGYDlgVpCrYNsM3V6rtNlmE86XUlDEOKoqDb7QJwObrh6NEeURSRZRm9Xo8/Ll7x/sMhRVFweTXB92pUq1U47fsio9ciSSgnLUeWf/8ukoTytFMXmY1Fgms57fsiSSirV+dy0nJEklBkeiWnfV/Mm/EM2g2IQ1zLoP6gD5JxcxuBYwEwGs9AMpzBLq5lwHIO9TrBeIbxia8kikpsG+YLaLhQqUCn02EyucU0YWeny2w2Y70uWa5hp20Qx0KrVcH47ecfRWuD9Trl7OwXXrz4HpECrS2yLMWyqpRlft/Pzn7l5csfAIVSoOK7gIpRsF7MqFVguOsTBhNqFUWn6dL1athaiOZThrs+DVuRr5fockM0n2J6TRfLVBjkaAU3b685PjokyzLiOCLbJChDeHz8HqPRCFMLWoGpBa9ZR5mmQqTA8xp4Xo1Go8Z0+hbL0riuTVnm1GoOs1lAp9NGa+OelWWOWqcbrkZjvLZPXgp3iyX7jw5QpoVZqdLwWizjFc1Wm3m4AKXZ23/IIopZJSnK6/Y4OP6Afy6vcb0OewdHjIM7bhcrSl1lIxqn6fNmPMX1OvdbbdfZP3yM8fzZh6IU9HoDLi7+ZDDYI46XDIcPmExGVKsO9brLfB7i+y3Oz//i8PCAOF6jFHBSRyQZiSQTef75xyLJRCQZybeffbTl4aV89/WzLY/eyE/ffLnl89fyxdOBqKMnJ6AqsIzxdvqQl4BJpz+EtACnRlIqyAqouGxQkORQa6DsOsZXn56KZVkEQYBt22ityfMc13WJ4xjLsvA8jyAIEBEcxyFJEmzbJk1TDEnD/+tcllt183z7aXinL8BqtdX8P9X/BYLIegJjDTxhAAAAAElFTkSuQmCC" title="Search Video"></td><td style="padding: 0; padding-right: 0px; "><img id="ezsb06" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByElEQVQ4jY2Tv2sTYRjHP2+8c7FIwMUSD9xEKJhmE3Rqb2tBNAaXrHbvkEnc/Ads1i4OwaW9UByFbvUHNwXBJIPBoRdqQY2nS8O9X4erR3OXFr/wDO/z8jzP9/t+3wdJWJsE1ib6X1ibyNokkISxNtkzprTOGQyHQ7a3t/kyGmGMYX1tjWazSR6S7ZKfHIahLrmunFy0Wq25TJDsTPLpxoYc19Wq76vf72fnG543T4yMZAUmozUej4miiMlkwq84ptPpEAQBANOTk7wICgwGg4GqtVpBguO6cxkUGjxuNOS4rqq1mqIo0la7fWGDUv5l/9Gt1+ssLi7S6/WyuziOC04UGFSXl7OJq74/48hWu32OhD9RlgrDUBXPk+O6qniettpt1RsNrfi+4u9j2f4r6eNmGpkLb5bg3i6UbxUpnsX+I1i4CZfL8Pk5PLGnEg7fSq+RPmxKcaRz8ftQGu1IP/rSzrXcP/gawPuH6aTyfbjug3sVBBgDR/tw1IW7u2n++ADuPMNYm8iYUzOOQ/j0Ar5100JO6wEWbsPyS6iswjR1Q84VjLVJYEzpwYzWnwM4fgfTSdqhvASVlXkO7qJ0nffydl4Mm63zXyJdNaOVXRf9AAAAAElFTkSuQmCC" title="Search Amazon"></td></tr><tr style="padding: 0;"><td style="padding: 0; padding-right: 2px; "><img id="ezsb07" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABjElEQVQ4jaWTIXCjQBSGv3QiVi6OyD3HueBAIpGJCzIydYmMjOw5cEUWd3GNayS4InGHJG5xt64n2myOZm7mpnlq5735v/3fvn0jtUrfuCHGAN0XxRPg7pbbu1sB/3QQKkWexAjh2NzzOib21LWDx3VMu1sSqkvxt+5ZBIpmO2Pyl+DnaggVwuFum1doY3j5AE2lQ91rnE0BwK90RagU86wCIJsH1n6kJCO1St+6j0S5W1r67GFP3WvyJGYRKO6LiqbTvKxjTr3BlYJTby6Ac8SeIksiAI5NR/pcMY881tGU5tTjuZKiasnLhrZt3wGudGgMGKOvQK4U/DjWTJUkUop5duDQtLaNMcB+M7OWnl4bDnXHse1R23wAKqrWis9TsA787wrlChLfszCAp9eG9mRIFwHf7rPBr7UO6l5Tl+/2t/sSIRwS/xr4+ct3wEj8xzItQ590EeBsisE7CeEwnnBZps+jBHClsGd/IilbPaiPzyRjNK50bM8AndZ0XQ/AbhmQJiHhQ2/FjtH8AYJgtKPDFmHZAAAAAElFTkSuQmCC" title="Search Dictionary"></td><td style="padding: 0; padding-right: 2px; "><img id="ezsb08" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACUElEQVQ4jZ2Ty0vUURTHP7+Z3/x0tBJEy8zEaKO7SMVdQS+IoEVtsqCEaBFZ9kBaFBUpQYH/QEGr3IhIEAW1axEVRIvykY5j6Izm+JhmtEZ/j3tPi3Fezq4DB845995zvvd7zjHoGRUAtIBo0IBSaV9p0Drtexk7z1ceJoDcbeJ/xDj3Fh9aig5CEzaPHi4y/H0dgMmQzdSkU5xBefjQuiDmOMLzZ0n6X6zQ9zjO1KTDpY55uq7EipMoXYgg8VthWQZaQUW5H8s0iC8rUn81rivEl1VhAk9hotIIZqZdeu4tUhr0cehoGYm4Yl9zCS1tQTouVmTfRGZcdtcHsgjg9lcRERnoT8iemgk50PZTRETCIVvW17RkJByypf10VNpPReTXnCsiIhwfEDPDQcNei111AaqqTd68+kNjk8WNznlKgwadXZUMDa4yFXZYXlBEZ1xqdpqgNSY6/a/9LUGud1eyEPNobLK42Rnjx5hNwPKxtKh40FvNp48pamtNqrb78zjw0gj8fjhxcgtzUY9bV2OMj9m4DriO5sP7Ne50L/CkbwfRiEtDg5XXBS/HbDjkcu1yjNFhB2dTx8ZGHHrvL1FXHwAj00aFL9MFERgaWGHkm43rFg9XMqn58nmdyLSbC2qNicohCAQMbFswjHQRrQUMg4AJAqRSmrlZL2+QJMeBYcDZCxXMRj0mxh22bfVx8EgZAC8HV0kmNM2tJRw+Vl6AAM6/k3xRniPKs8XbpMqzRXlOwV1an4qJ0hhnXufWVOmNVd2wtQJP0tWyKtn1/wch/oXXKOvhAwAAAABJRU5ErkJggg==" title="Search Baidu"></td><td style="padding: 0; padding-right: 0px; "><img id="ezsb09" width="11px" height="11px" class="ezSearchClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEElEQVQoz2N8kaTEQApgYSAR0EADl9lHHrv3//8wvp4gT5SGnze52eR/sKt/Rdggkv2YifPv+5USvx9ziBY8ZGBggBjGKvuD3+81M/+fP69ZUZz0Zb8gf8BrVsmfvx9zfL/Ey231ASInGP3871vWjxtEed3eomj4cY2Hz+sNhP9lnxBEA6vsD0aW/x9WSfz9yMLE8xeuB90PHFpfIAxm3j8MDAx/P7LgDCUu00/fTvGzKX1nYGBg5v/z4xoPf8BrPp/Xn7aIwn3MwMDACIlpLrOPvC7vGJj+///BxMjxj4GB4c1kOU7jT9wWHxkYGP7/YoQIvmxRYkROGhxaX35c48F0JLIgihMxVWMKDoa0hAYASMtjsxfzB1oAAAAASUVORK5CYII=" title="Urbandictionary"></td></tr></tbody></table></div><div class="ezui-dialog ezui-widget ezui-widget-content ezui-corner-all ezui-draggable ezui-resizable" tabindex="-1" role="dialog" aria-labelledby="ezui-dialog-title-ezLinkPreviewPLUSONE" style="display: none; position: absolute; overflow: hidden; z-index: 10000002; outline: 0px;"><div class="ezui-dialog-titlebar ezui-widget-header ezui-corner-all ezui-helper-clearfix" unselectable="on"><span class="ezui-dialog-title" id="ezui-dialog-title-ezLinkPreviewPLUSONE" unselectable="on">+1</span><a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="ezui-dialog-titlebar-close ezui-corner-all" role="button" unselectable="on"><span class="ezui-icon ezui-icon-closethick" unselectable="on">close</span></a></div><div id="ezLinkPreviewPLUSONE" style="border-width: 0px; display: block;" class="ezui-dialog-content ezui-widget-content"><iframe id="ezLinkPreviewPOIFRAME" frameborder="0" scrolling="yes" style="width: 100%; height: 90%"></iframe></div><div class="ezui-resizable-handle ezui-resizable-n" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-e" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-s" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-w" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-se ezui-icon ezui-icon-gripsmall-diagonal-se ezui-icon-grip-diagonal-se" style="z-index: 1001;" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-sw" style="z-index: 1002;" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-ne" style="z-index: 1003;" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-nw" style="z-index: 1004;" unselectable="on"></div></div><div class="ezui-dialog ezui-widget ezui-widget-content ezui-corner-all ezui-draggable ezui-resizable" tabindex="-1" role="dialog" aria-labelledby="ezui-dialog-title-ezLinkPreviewDIALOG" style="display: none; position: absolute; overflow: hidden; z-index: 10000001; outline: 0px;"><div class="ezui-dialog-titlebar ezui-widget-header ezui-corner-all ezui-helper-clearfix" unselectable="on"><span class="ezui-dialog-title" id="ezui-dialog-title-ezLinkPreviewDIALOG" unselectable="on">&nbsp;</span><a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="ezui-dialog-titlebar-close ezui-corner-all" role="button" unselectable="on"><span class="ezui-icon ezui-icon-closethick" unselectable="on">close</span></a><a id="ezLinkPreviewPIN" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="pin to keep overlay open" class="ezui-dialog-titlebar-pin ezui-corner-all" unselectable="on" role="button"><span id="ezLinkPreviewPINSPAN" class="ezui-icon ezui-icon-pin-w" unselectable="on">pin</span></a><a id="ezLinkPreviewEXTLINK" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="open to new tab" class="ezui-dialog-titlebar-ezlink ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-extlink" unselectable="on">pin</span></a><a id="ezLinkPreviewSEARCHBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="toggle search bar" class="ezui-dialog-titlebar-ezsearch ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-search" unselectable="on">search</span></a><a id="ezLinkPreviewMINIMIZEBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="minimize/restore content" class="ezui-dialog-titlebar-ezminimize ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-arrowthick-2-n-s" unselectable="on">minimize</span></a><a id="ezLinkPreviewFORWARDBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="forward" class="ezui-dialog-titlebar-ezforward ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-triangle-1-e" unselectable="on">forward</span></a><a id="ezLinkPreviewBACKBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="back" class="ezui-dialog-titlebar-ezback ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-triangle-1-w" unselectable="on">back</span></a><a id="ezLinkPreviewVTBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="Send preview to ViewText.org for increased readability" class="ezui-dialog-titlebar-viewtext ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon-viewtext" unselectable="on">ViewText</span></a><a id="ezLinkPreviewVEMAILBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="Send link by email" class="ezui-dialog-titlebar-email ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon-email" unselectable="on">Email</span></a><a id="ezLinkPreviewGRBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="+1 preview and/or share to Google+" class="ezui-dialog-titlebar-greader ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon-greader" unselectable="on"></span></a><a id="ezLinkPreviewGBBUTTON" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="Send preview to Google Bookmarks" class="ezui-dialog-titlebar-gbkmk ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon-gbookmarks" unselectable="on"></span></a><a id="ezLinkPreviewZOOMOUT" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="zoom out" class="ezui-dialog-titlebar-ezzoomout ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-zoomout" unselectable="on">zoomout</span></a><a id="ezLinkPreviewZOOMIN" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="zoom in" class="ezui-dialog-titlebar-ezzoomin ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-zoomin" unselectable="on">zoomin</span></a><a id="ezLinkPreviewZOOMNORM" href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" title="zoom normal" class="ezui-dialog-titlebar-ezzoomnorm ezui-corner-all" unselectable="on" role="button"><span class="ezui-icon ezui-icon-arrowreturnthick-1-w " unselectable="on">zoomin</span></a></div><div id="ezLinkPreviewDIALOG" style="border-width: 0px; display: block;" class="ezui-dialog-content ezui-widget-content"><table cellpadding="0" cellspacing="0" id="ezSearchBar" style="border: 0; display: none;vertical-align:bottom; padding-bottom: 2px;"><tbody><tr><td style="padding-right: 4px; "><input id="eztxtSearch" type="text" style="width: 120px; font-size: 8pt; -webkit-border-radius: 8px; border: 2px solid #ddd; padding-right: 4px; padding-left: 4px;" title="enter search term and click desired search engine"></td><td style="padding-right: 4px; "><img id="ezs01" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiUlEQVQ4y33TTYhOYRQH8N+rdxDlrkQNC1JDHh/lYzMpC2UjSRYWo1jYyVLJo5RrIxsLi2GjDLMla9nMbizEzaR85pWduooyMa/NmbquO556es495/z/95zz/J+eJVZZ1eexFiVWYBSvcyoWmnn9FqiXUzEsq/owbob7AyZwEKcw1cT0GuBxTOMjbuBhhC7gClbhNq5hBO9yKobNCo5jY+yLGMNoTsXTsqrncQiD+ME8zuFOk2ASBzCHBZzFjrKqr+J5VHIkcpdjy18tNFo5iXvt+cS6hR+xJ3MqvvRa4KN4FJ9vcB0/o9x94T+TU3H3nyEGwSz24it25VQMwr8aL7EpiMcWr7PfAG8OMNxfBENOxfeyqh/gUvS+Fa/aOljXsOc6+n/bsNd3ETQVtqyDYKRh/+pS4ucI9LGzg2BPnEN8WmqIMxjHN+zOqXgf/m14FmqczanY3/kWcBlPsAYzZVVPRzsTAYbc+RYaVZwIIa1shX7jdE7F1H8JgmQ7jmFDuAZ4nFPxop37B9DQeG8bswRYAAAAAElFTkSuQmCC" title="Search Dogpile"></td><td style="padding-right: 4px; "><img id="ezs02" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABIklEQVQ4jaWTIUzDUBCGvxJW04THBFWrGAZThSI0GNwcjjkccg4HDodDTqFIHRKFIjRgpoqYqihmM6MkNZ0Y4vLaLm1JWC95uZfL+7939+6dsXrcW9HCttqIAbYB6LrQUbBMYBFuADi8BfsY5gG8nG0AqDNTwa4r+z8yWwd0diSb3gAsp3r66xmmY5i/NQC6rqw0hvAOZoHELQf2hwLuDSDy4X3UUELkw+QGsqQa7w/h6F589gOT65o21onLkMiXff8c0P9AC9K4WawtjcWbqgTQj2I5YHvNYlNJ+iWQAKbjok0nD3BwWRXbHpw+ySVZAq8XABj5LJgK3KtCnCXw/Vlkptu6COFjlF9oVIbJcqRVtpfXmZc5C9b+QD3gn9Z6Gn8BcuVdnjGhH18AAAAASUVORK5CYII=" title="Search Bing"> </td><td style="padding-right: 4px; "><img id="ezs03" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABeklEQVQ4jdWSPUtCYRTHf1fv6HAREQsTAydxkGqqIE2ChgoCl6Al6wM4NBVCIfgRWqRFmqJMwiEiX4IIF0Pk4pKYhJiEREgQhPE0yL1ludXSmQ6H8385L/DvQxJCAJCJFEWn2UFN1fsaXD47VreZQHRc0mrbxrjQclkDX++VBypU8w2NVHwl0Qk08OrRPKP+IQDucg+kwwVaaltvzMZufpC4fDYMj5UnAA6CZ5ys5wCoZZu01Da7ryF2X0OES0G6PFM5ve9Td0wOI1fzDb2gpuo4p2+ZiXjRiC+jJc5jWV5o0FB7fTaPRXcnf58pvXmFfcLCyvEcmUiRZCzxOS8KACZLDxaIjksGl8/+Y3HlwxpAH1hTBlCcJj2XrW5z3+k2LhYYmbLSfXtnp7RD+bBGMpZAwYN7yQHA8r5fX6QkhCATKYrval9DwcPs1pj+C9vGuHD5bKxlFiVZmwUQnWaHer5FtV7oWVa8Ax/J4jTx0u5+OvhNGH6F/guCDw2KlX2TeOe2AAAAAElFTkSuQmCC" title="Search Yahoo"> </td><td style="padding-right: 4px; "><img id="ezs04" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVQ4ja2Tv2saYRjHP0lBSqCYhECzNNNZhCJ2CMVB9I6TRIKQk6RdbhMzpOAeOpz5E/w/inJTMvSOZnApoZhrKKTlhdMhNFSveg7SwWCHkLexdSnpA+/wPjzfz/PrfefG1+MJ97D5+4j/D8B1XUzTpLBVwHVdAOpv6xS2CliWhRACAMuyME0TIQRCCCqVCqZpMq/rOolnCdqdtqTuvNwBoFFvABB0AxYeLqCpGoqisBRdAkBTtZsWdl/tEg5CbNsm6AYAGEWDcBDitTx83+fy2yXlvfJU+eW98g1AURQyaga7YeP7PgCqppJMJqkeVnEcBzWjSuHZpzN5l0MslUoAOI7DLdQoGoivgvPP57KtoBtw+uGUxeXFaYCu6ySTSZrNphycqqmkUinCfiiz98M+o58jdF2fBgCk02mcdw5ey5vqtd1pyw2dvD9h7cna7zXeDTx4c4DyVKFhNwi6AV7LI/E8wcryCrZtA9Dr9igaRal5YFWtw7uQYTik9bHF1fcrVh+vsm1sMxgOOD46JhKJMBqN2MhvzK4AIBaL0fvRk29AURSy2SwAtVqNXC43LRhfjyd/nvxmfpLfzE8uvlxI3/7r/Uk8Hv8rdm7Wb3Rdl+ijKOsv1qVPCEGn05HTv7WZgH+xX3yx7irlByjQAAAAAElFTkSuQmCC" title="Search Wikipedia"> </td><td style="padding-right: 4px; "><img id="ezs05" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAC3ElEQVQ4jVWTzW4bZRiFn/m+GXtm/DP22In8k6YNIalCyyYCVmwqISGExIYlK6ReABIqoN4CihD3wp2AAkFUVarEduOJnbFn7BnPz8vCKBW7cx6d5XkMSVaCUlAUoDUsl9BowGYDlgVpCrYNsM3V6rtNlmE86XUlDEOKoqDb7QJwObrh6NEeURSRZRm9Xo8/Ll7x/sMhRVFweTXB92pUq1U47fsio9ciSSgnLUeWf/8ukoTytFMXmY1Fgms57fsiSSirV+dy0nJEklBkeiWnfV/Mm/EM2g2IQ1zLoP6gD5JxcxuBYwEwGs9AMpzBLq5lwHIO9TrBeIbxia8kikpsG+YLaLhQqUCn02EyucU0YWeny2w2Y70uWa5hp20Qx0KrVcH47ecfRWuD9Trl7OwXXrz4HpECrS2yLMWyqpRlft/Pzn7l5csfAIVSoOK7gIpRsF7MqFVguOsTBhNqFUWn6dL1athaiOZThrs+DVuRr5fockM0n2J6TRfLVBjkaAU3b685PjokyzLiOCLbJChDeHz8HqPRCFMLWoGpBa9ZR5mmQqTA8xp4Xo1Go8Z0+hbL0riuTVnm1GoOs1lAp9NGa+OelWWOWqcbrkZjvLZPXgp3iyX7jw5QpoVZqdLwWizjFc1Wm3m4AKXZ23/IIopZJSnK6/Y4OP6Afy6vcb0OewdHjIM7bhcrSl1lIxqn6fNmPMX1OvdbbdfZP3yM8fzZh6IU9HoDLi7+ZDDYI46XDIcPmExGVKsO9brLfB7i+y3Oz//i8PCAOF6jFHBSRyQZiSQTef75xyLJRCQZybeffbTl4aV89/WzLY/eyE/ffLnl89fyxdOBqKMnJ6AqsIzxdvqQl4BJpz+EtACnRlIqyAqouGxQkORQa6DsOsZXn56KZVkEQYBt22ityfMc13WJ4xjLsvA8jyAIEBEcxyFJEmzbJk1TDEnD/+tcllt183z7aXinL8BqtdX8P9X/BYLIegJjDTxhAAAAAElFTkSuQmCC" title="Search Video"></td><td style="padding-right: 4px; "><img id="ezs06" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByElEQVQ4jY2Tv2sTYRjHP2+8c7FIwMUSD9xEKJhmE3Rqb2tBNAaXrHbvkEnc/Ads1i4OwaW9UByFbvUHNwXBJIPBoRdqQY2nS8O9X4erR3OXFr/wDO/z8jzP9/t+3wdJWJsE1ib6X1ibyNokkISxNtkzprTOGQyHQ7a3t/kyGmGMYX1tjWazSR6S7ZKfHIahLrmunFy0Wq25TJDsTPLpxoYc19Wq76vf72fnG543T4yMZAUmozUej4miiMlkwq84ptPpEAQBANOTk7wICgwGg4GqtVpBguO6cxkUGjxuNOS4rqq1mqIo0la7fWGDUv5l/9Gt1+ssLi7S6/WyuziOC04UGFSXl7OJq74/48hWu32OhD9RlgrDUBXPk+O6qniettpt1RsNrfi+4u9j2f4r6eNmGpkLb5bg3i6UbxUpnsX+I1i4CZfL8Pk5PLGnEg7fSq+RPmxKcaRz8ftQGu1IP/rSzrXcP/gawPuH6aTyfbjug3sVBBgDR/tw1IW7u2n++ADuPMNYm8iYUzOOQ/j0Ar5100JO6wEWbsPyS6iswjR1Q84VjLVJYEzpwYzWnwM4fgfTSdqhvASVlXkO7qJ0nffydl4Mm63zXyJdNaOVXRf9AAAAAElFTkSuQmCC" title="Search Amazon"></td><td style="padding-right: 4px; "><img id="ezs07" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABjElEQVQ4jaWTIXCjQBSGv3QiVi6OyD3HueBAIpGJCzIydYmMjOw5cEUWd3GNayS4InGHJG5xt64n2myOZm7mpnlq5735v/3fvn0jtUrfuCHGAN0XxRPg7pbbu1sB/3QQKkWexAjh2NzzOib21LWDx3VMu1sSqkvxt+5ZBIpmO2Pyl+DnaggVwuFum1doY3j5AE2lQ91rnE0BwK90RagU86wCIJsH1n6kJCO1St+6j0S5W1r67GFP3WvyJGYRKO6LiqbTvKxjTr3BlYJTby6Ac8SeIksiAI5NR/pcMY881tGU5tTjuZKiasnLhrZt3wGudGgMGKOvQK4U/DjWTJUkUop5duDQtLaNMcB+M7OWnl4bDnXHse1R23wAKqrWis9TsA787wrlChLfszCAp9eG9mRIFwHf7rPBr7UO6l5Tl+/2t/sSIRwS/xr4+ct3wEj8xzItQ590EeBsisE7CeEwnnBZps+jBHClsGd/IilbPaiPzyRjNK50bM8AndZ0XQ/AbhmQJiHhQ2/FjtH8AYJgtKPDFmHZAAAAAElFTkSuQmCC" title="Search Dictionary"></td><td style="padding-right: 4px; "><img id="ezs08" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACUElEQVQ4jZ2Ty0vUURTHP7+Z3/x0tBJEy8zEaKO7SMVdQS+IoEVtsqCEaBFZ9kBaFBUpQYH/QEGr3IhIEAW1axEVRIvykY5j6Izm+JhmtEZ/j3tPi3Fezq4DB845995zvvd7zjHoGRUAtIBo0IBSaV9p0Drtexk7z1ceJoDcbeJ/xDj3Fh9aig5CEzaPHi4y/H0dgMmQzdSkU5xBefjQuiDmOMLzZ0n6X6zQ9zjO1KTDpY55uq7EipMoXYgg8VthWQZaQUW5H8s0iC8rUn81rivEl1VhAk9hotIIZqZdeu4tUhr0cehoGYm4Yl9zCS1tQTouVmTfRGZcdtcHsgjg9lcRERnoT8iemgk50PZTRETCIVvW17RkJByypf10VNpPReTXnCsiIhwfEDPDQcNei111AaqqTd68+kNjk8WNznlKgwadXZUMDa4yFXZYXlBEZ1xqdpqgNSY6/a/9LUGud1eyEPNobLK42Rnjx5hNwPKxtKh40FvNp48pamtNqrb78zjw0gj8fjhxcgtzUY9bV2OMj9m4DriO5sP7Ne50L/CkbwfRiEtDg5XXBS/HbDjkcu1yjNFhB2dTx8ZGHHrvL1FXHwAj00aFL9MFERgaWGHkm43rFg9XMqn58nmdyLSbC2qNicohCAQMbFswjHQRrQUMg4AJAqRSmrlZL2+QJMeBYcDZCxXMRj0mxh22bfVx8EgZAC8HV0kmNM2tJRw+Vl6AAM6/k3xRniPKs8XbpMqzRXlOwV1an4qJ0hhnXufWVOmNVd2wtQJP0tWyKtn1/wch/oXXKOvhAwAAAABJRU5ErkJggg==" title="Search Baidu"></td><td style="padding-right: 4px; "><img id="ezs09" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEElEQVQoz2N8kaTEQApgYSAR0EADl9lHHrv3//8wvp4gT5SGnze52eR/sKt/Rdggkv2YifPv+5USvx9ziBY8ZGBggBjGKvuD3+81M/+fP69ZUZz0Zb8gf8BrVsmfvx9zfL/Ey231ASInGP3871vWjxtEed3eomj4cY2Hz+sNhP9lnxBEA6vsD0aW/x9WSfz9yMLE8xeuB90PHFpfIAxm3j8MDAx/P7LgDCUu00/fTvGzKX1nYGBg5v/z4xoPf8BrPp/Xn7aIwn3MwMDACIlpLrOPvC7vGJj+///BxMjxj4GB4c1kOU7jT9wWHxkYGP7/YoQIvmxRYkROGhxaX35c48F0JLIgihMxVWMKDoa0hAYASMtjsxfzB1oAAAAASUVORK5CYII=" title="Urbandictionary"></td><td style="padding-right: 4px; "><img id="ezs10" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACRklEQVQ4y42SP0xTURTGv/t4VCkCioNxURZorUKMCw7EBSUxREedlEVJbBTjQOImmoigEVKwNaEiNS6m8c+gCYmJDIQEm2hSStJEMA4Oksorr63A68O+9zmUvva1DJ7kDPfec373+3KOIInSyMQiDzj96bYZX4IZXwYASJ5mSJ4WSGc7n9a1tXtL60UpIBUYozH2DNC3sGPsckDuu4IGb5+oAKiXemjORfA/IXW0Y9/LF8ICpALjNB75AQD1oSCq3C5QVaFNhqC/frcjpKrfi73ePiFIIuluY0G2dPgQnN5eVJ/pBLI6tPEAsuE3gGFU2KkOB0fl1PAgSz3XjTyEfOK4da4dvAexpxZacMoO0LdgTs/ckhlfsks74rafr3+Efu1cJQAA498gF0ZlXWYykPtnYTzpAgAYo8dgrs3AeVVBVYsOrEv4c/cgAMCML0Mup+YWYlYzf90Ek4G85W4gt+DE5tR+W70seZphziaLgNgiHF2n8wDtC7heg43xBuRiNeCGZGsWnmbIwtMCzH4uUbBYnHfTe2hvj8LpXYVwEMZPBzZHDsBYkbcBLoj0wvydvxd6BwqTEPX1aIxGAJFfNvXkKZiJ3xC7TTArlY1xYgokofp9VJpcVoaiQ0xoCZLkj4vnOeDrtr0rTS6qfh9J7rzKj8MdUAwZK9k0PFINvkPHRM/XoveOdjRurzJIWqn6fVRcrXz+4QYVTSFJrs3NFBW4Wq2fC2kDkEQ6Ov8qMxlkTs/SNE0aqwqTl3uoDt1nOjo/XF7/D4vVW1hGKL2vAAAAAElFTkSuQmCC" title="DuckDuckGo"></td><td style="padding-right: 4px; "><img id="ezs11" width="16px" height="16px" class="ezSearchBarClickClass" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACdklEQVQoz02SS0hVURSG/73PPr6lo+alojQ1owIzy4yCdJKVPRQibRD2wqRB9JhkUQ1KZ2lRCTWQSKWESwRJSEUQKCIJRVcsIiufFFnWDe/Vc89+rAZmuSZr/QvWx7/gZ429ntYABwCY2QHMmumgWc2gSdgQEQVjCAA0AEAzWOAgBbJCwZiBPjc7FwmONmQB0BBSQipwNgfHwAWlPGlZ1FxnhYIAxveeGNt/kQtognA9SAP23wzBwJJYeLduMnN1aNmaBc9afA9uIBj8XN1goiA8TZIA8/cBDkr81Jf6sh1A/6kmFe98Kapce77Y97zl24bSUF6hkJJcxWbQM8Zy2mpT+jtlvOMpSJeUk/b2SH3uzarYj4FfKwuFKxGRBDDG4YuFAeutbtrYUO4MB7Lu1QYO1HNASgCQCi6BHfW7UiE+CocK7PwlfMpDTUdETQQLr1ckjQTCqelj60ozOlvDqendp/3McdjB+66WuLzT9iWyFx/M0IQZDJIvjn0d/VlwrSJ5NODFOW/KLozk79Yxji1IKEk7VomMFH623fs+SWU51vEiG8Dgj9RL0/7i2xUpowFnKPC+oJJ5IA0hFZYmMwAF6XzrCishmoUiFPaQMZ9nZiV1HPOX3Cpf3tNKQHf5FdIQSqJrwGzKtPbkCgBP3+nmHpm72KrZZmsPYXveo8P+0jsVxkAqgmBsV+O0VMhL49k+3jWgGJAQw86VRIUjdLLNIwaAYqZ/R2IdgOxosC0NU5itfetF1WYbwMC4OfPQC00RrNkAzISGQUiP/u2Mwath83pIPw6oSZcMGBQ4BwBmAAAcbPvVKalpDmJuqhkBbM5BVDT7A9g1I3p6751XAAAAAElFTkSuQmCC" title="StartPage"></td></tr></tbody></table><iframe id="ezLinkPreviewIFRAME" frameborder="0" scrolling="yes" style="width: 100%; height: 90%"></iframe><img id="ezLinkPreviewIMG" src="" style="border-width: 0px; display: none;"></div><div class="ezui-resizable-handle ezui-resizable-n" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-e" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-s" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-w" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-se ezui-icon ezui-icon-gripsmall-diagonal-se ezui-icon-grip-diagonal-se" style="z-index: 1001;" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-sw" style="z-index: 1002;" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-ne" style="z-index: 1003;" unselectable="on"></div><div class="ezui-resizable-handle ezui-resizable-nw" style="z-index: 1004;" unselectable="on"></div></div><div id="ezLinkPreviewGREADER" style="border-width: 0px; position: fixed; top: 4px; left: 4px; width: 16px; height: 16px; cursor: pointer; opacity: 0.65; z-index: 9999999999; display: none;"></div><div id="ezLinkPreviewGBOOKMARK" style="border-width: 0px; position: fixed; top: 4px; left: 20px; width: 16px; height: 16px; cursor: pointer; opacity: 0.65; z-index: 9999999999; display: none;"></div><script src="./Week 3  Twitter App Client_files/canvas_profile_badges.js" type="text/javascript"></script><div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable ui-dialog-buttons" role="dialog" aria-hidden="true" tabindex="-1" style="display: none; outline: 0px; z-index: 1000; position: absolute;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-id-1" class="ui-dialog-title" role="heading">Find Outcomes</span><a href="https://canvas.instructure.com/courses/818130/assignments/2448287?module_item_id=5213360#" class="ui-dialog-titlebar-close ui-corner-all" role="button" tabindex="0"><span class="ui-icon ui-icon-closethick">close</span></a></div><div id="import_dialog" class="ui-dialog-content ui-widget-content"><div class="outcomes-browser content-box">
+
+  
+
+  <div class="outcomes-main border border-rbl">
+    <div class="outcomes-sidebar" role="application" style="width: 201px;">
+      <div class="wrapper" style="width: 201px;"><ul class="outcome-level" style="opacity: 1;"></ul></div>
+    </div>
+    <div class="outcomes-content">
+    </div>
+  </div>
+</div>
+</div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" style="margin-top: 0px;"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Cancel</span></button><button type="button" class="btn-primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false" style="display: none;"><span class="ui-button-text">Import</span></button></div></div></div></body></html>
