@@ -39,6 +39,8 @@ static NSString *replyNotification = @"replyTweet";
         NSString *replyTo = [userInfo objectForKey:@"reply"];
          NSLog (@"Notification is successfully received! %@",replyTo);
         self.tweetTextView.text = [NSString stringWithFormat:@"@%@",replyTo];
+        self.textCount = self.tweetTextView.text.length;
+        self.textCountLabel.text = [NSString stringWithFormat:@"%ld",TweetLength-self.tweetTextView.text.length];
     }
 }
 
@@ -59,13 +61,10 @@ static NSString *replyNotification = @"replyTweet";
     }
     
     
-    self.textCount = 0;
     User* currentUser = [User currentUser];
     self.profileNameLabel.text = currentUser.name;
     self.profileTweetHandleLabel.text = [NSString stringWithFormat:@"@%@", currentUser.screenName];
     [self.profileImageView setImageWithURL:currentUser.profileImageURL];
-    
-    //self.textCountLabel.text = [NSString stringWithFormat:@"%ld",TweetLength-self.tweetTextView.text.length];
     
     [self.tweetTextView becomeFirstResponder];
 }

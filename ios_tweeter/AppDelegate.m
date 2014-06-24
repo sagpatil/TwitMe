@@ -11,6 +11,7 @@
 #import "TwitterClient.h"
 #import "ListViewController.h"
 #import "User.h"
+#import "MBProgressHUD.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -117,19 +118,11 @@
                                              [client currentUserWithSuccess:^(User *currentUser) {
                                                  [User setCurrentUser:currentUser];
                                                  [self showTimeLine];
-                                                 NSLog(@"Sucess in app delegate geting user");
+                                                 NSLog(@"Sucess in geting user");
                                              } failure:^(NSError *error) {
                                                     NSLog(@"Error getting Curent user");
                                                  
                                              }];
-                                             
-//                                                [client homeTimelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                                                    NSLog(@"Response %@", responseObject);
-//                                                    
-//                                                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                                                    NSLog(@"Error getting tweets");
-//                                                }];
-//                                             
                                              
                                             
                                          }

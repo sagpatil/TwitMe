@@ -25,7 +25,7 @@
 
 
 - (void)currentUserWithSuccess:(void (^)(User* currentUser))success failure:(void (^)(NSError *error))failure;
-- (void)homeTimelineWithSuccess:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure;
+- (void)homeTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure;
 
 -(AFHTTPRequestOperation *) postTweetWithSuccess:(NSDictionary *)param sucess:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError*error))failure;
 - (AFHTTPRequestOperation *)tweetWithSuccess:(NSDictionary *)param success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;

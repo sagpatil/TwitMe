@@ -20,7 +20,7 @@ static NSString *replyNotification = @"replyTweet";
 
 @interface ListViewController ()
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
-
+@property (strong, nonatomic) NSString* lastTweetId; // tweet id of last row in table. will be sent to get the older tweets for infinite scrolling
 
 @end
 
@@ -64,7 +64,8 @@ TweetCell * _stubCell;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        NSLog(@"Init");
     }
     return self;
 }
@@ -78,8 +79,10 @@ TweetCell * _stubCell;
 }
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
     NSLog(@"View Did Load");
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     self.tabelView.dataSource = self;
     self.tabelView.delegate = self;
@@ -96,7 +99,6 @@ TweetCell * _stubCell;
     [self.refreshControl addTarget:self action:@selector(refreshTweets) forControlEvents:UIControlEventValueChanged];
     [self.tabelView addSubview:self.refreshControl];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self getTimeLineTweets];
     
@@ -114,15 +116,36 @@ TweetCell * _stubCell;
 -(void) getTimeLineTweets{
     
     TwitterClient *client = [TwitterClient instance];
-    [client homeTimelineWithSuccess:^(NSArray *tweets) {
-        self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
-        NSLog(@"Success Loading tweets %ld",tweets.count);
-        [self.tabelView reloadData];
-    } failure:^(NSError *error) {
-        NSLog(@"Falied timeline loading");
-    }];
+    [client homeTimelineWithSuccess:nil
+                            success:^(NSArray *tweets) {
+                                self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
+                                [self.tabelView reloadData];
+                                NSLog(@"Success Loading tweets %ld",tweets.count);
+                                
+                            } failure:^(NSError *error) {
+                                NSLog(@"Falied timeline loading");
+                                
+                            }];
     
 }
+
+-(void) getOlderTweetsFrom:(NSString *)lastTweetId{
+     NSDictionary *param = @{@"max_id":lastTweetId };
+   // NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:@{@"max_id":lastTweetId, nil}];
+    TwitterClient *client = [TwitterClient instance];
+    [client homeTimelineWithSuccess:param success:^(NSArray *tweets) {
+        [self.tweets addObjectsFromArray:tweets];
+        [self.tabelView reloadData];
+        NSLog(@"Success Loading tweets %ld",tweets.count);
+
+    } failure:^(NSError *error) {
+        NSLog(@"Falied timeline loading");
+        
+
+    }];
+    
+   }
+
 #pragma TableView
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float additionalHeight =0;
@@ -196,6 +219,18 @@ TweetCell * _stubCell;
     [[NSNotificationCenter defaultCenter]
      postNotificationName:clickNotification
      object:self userInfo:userInfo];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (self.tweets.count - 1 == indexPath.row){
+        NSLog(@"Searching with more radius for inifinite scrolling");
+        Tweet *lastTweet = self.tweets[indexPath.row];
+        self.lastTweetId = lastTweet.idStr;
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self getOlderTweetsFrom:self.lastTweetId];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
 }
 
 #pragma mark  TimeLine View buttons

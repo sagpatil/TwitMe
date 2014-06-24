@@ -94,10 +94,10 @@
 
 
 
-- (void)homeTimelineWithSuccess:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure
+- (void)homeTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure
 {
     [self GET:@"1.1/statuses/home_timeline.json"
-   parameters:nil
+   parameters:param
       success:^(AFHTTPRequestOperation *operation, id response){
           NSDictionary *jsonDict = response;
           NSError *error = nil;
