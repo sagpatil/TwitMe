@@ -18,6 +18,7 @@ static NSString *replyNotification = @"replyTweet";
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *retweetedByHeight;
 @property (assign, nonatomic) long index;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tweetContentHeight;
 
 @end
 
@@ -140,7 +141,18 @@ static NSString *replyNotification = @"replyTweet";
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet_default"] forState:UIControlStateNormal];
     }
     
-    self.tweetTextLabel.text = tweet.text;
+    self.tweetContentView.delegate = self;
+     self.tweetContentView.text = tweet.text;
+    CGRect frame = self.tweetContentView.frame;
+    frame.size.height = self.tweetContentView.contentSize.height;
+    self.tweetContentHeight.constant = frame.size.height;
+    //self.tweetContentView.frame = frame;
+    
+    
+    
+    
+   
+    //self.tweetTextLabel.text = tweet.text;
     self.profileNameLabel.text = tweet.user.name;
     self.tweetHandleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.tweetHandleLabel.numberOfLines = 0;
@@ -155,9 +167,22 @@ static NSString *replyNotification = @"replyTweet";
     [formatter setDateFormat:@"MM/dd/yy, hh:mm a"];
     self.createdAtLabel.text = [NSString stringWithFormat:@"%@",  [formatter stringFromDate:self.tweet.createdAt]];
    
-
+    //self.tweetContentView shou
     
 }
+
+
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
+    NSLog(@"IN webView");
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:URL];
+    
+    
+    [self.tweetWebView loadRequest:requestObj];
+    
+    return NO;
+}
+
 
 #pragma mark View Button Events
 
@@ -184,6 +209,8 @@ static NSString *replyNotification = @"replyTweet";
 - (IBAction)onReplySmallClicked:(id)sender {
     [self onReplyClicked:sender];
 }
+
+
 
 - (IBAction)onRetweetButtonClicked:(id)sender {
     Tweet *tweet = self.tweet;

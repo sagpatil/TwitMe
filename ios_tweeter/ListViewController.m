@@ -195,13 +195,13 @@ static NSString *newTweetNotification = @"newTweet";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"clicked %ld", (long)indexPath.row);
-    Tweet *tweet = self.tweets[indexPath.row];
+   // Tweet *tweet = self.tweets[indexPath.row];
     DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     [self.tabelView deselectRowAtIndexPath:indexPath animated:YES];
-    detailView.tweetTextLabel.text = tweet.text;
-    detailView.profileNameLabel.text = tweet.user.name;
-    detailView.tweetHandleLabel.text = tweet.user.screenName;
-    
+//    detailView.tweetTextLabel.text = tweet.text;
+//    detailView.profileNameLabel.text = tweet.user.name;
+//    detailView.tweetHandleLabel.text = tweet.user.screenName;
+//    
     [self.navigationController pushViewController:detailView animated:YES];
     
     

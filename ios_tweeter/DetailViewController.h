@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
-@interface DetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
+@interface DetailViewController : UIViewController <UITextViewDelegate>
+//@property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageVIew;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetHandleLabel;
@@ -21,8 +21,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
+
+@property (weak, nonatomic) IBOutlet UITextView *tweetContentView;
+
+@property (weak, nonatomic) IBOutlet UIWebView *tweetWebView;
+
+
+
 @property (strong, nonatomic) Tweet *tweet;
 @property (strong, nonatomic) NSMutableArray* tweets;
+
+
 
 - (IBAction)onBackClicked:(id)sender;
 - (IBAction)onReplyClicked:(id)sender;
