@@ -143,11 +143,8 @@ static NSString *replyNotification = @"replyTweet";
     
     self.tweetContentView.delegate = self;
      self.tweetContentView.text = tweet.text;
-    CGRect frame = self.tweetContentView.frame;
-    frame.size.height = self.tweetContentView.contentSize.height;
-    self.tweetContentHeight.constant = frame.size.height;
-    //self.tweetContentView.frame = frame;
-    
+
+    self.tweetWebView.hidden= YES;
     
     
     
@@ -177,7 +174,7 @@ static NSString *replyNotification = @"replyTweet";
     NSLog(@"IN webView");
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:URL];
     
-    
+    self.tweetWebView.hidden = NO;
     [self.tweetWebView loadRequest:requestObj];
     
     return NO;
