@@ -93,7 +93,6 @@ TweetCell * _stubCell;
 {
 
     [super viewDidLoad];
-    NSLog(@"View Did Load");
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     self.tabelView.dataSource = self;
@@ -117,6 +116,7 @@ TweetCell * _stubCell;
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
 }
+#pragma mark Loading methods
 
 - (void)refreshTweets{
     
@@ -132,7 +132,7 @@ TweetCell * _stubCell;
                             success:^(NSArray *tweets) {
                                 self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
                                 [self.tabelView reloadData];
-                                NSLog(@"Success Loading tweets %d",tweets.count);
+                                NSLog(@"Success Loading tweets %lu",(unsigned long)self.tweets.count);
                                 
                             } failure:^(NSError *error) {
                                 NSLog(@"Falied timeline loading");
@@ -142,13 +142,13 @@ TweetCell * _stubCell;
 }
 
 -(void) getOlderTweetsFrom:(NSString *)lastTweetId{
-     NSDictionary *param = @{@"max_id":lastTweetId };
-   // NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:@{@"max_id":lastTweetId, nil}];
+
+    NSDictionary *param = @{@"max_id":lastTweetId };
     TwitterClient *client = [TwitterClient instance];
     [client homeTimelineWithSuccess:param success:^(NSArray *tweets) {
         [self.tweets addObjectsFromArray:tweets];
         [self.tabelView reloadData];
-        NSLog(@"Success Loading tweets %d",tweets.count);
+        NSLog(@"Success Loading tweets %lu",(unsigned long)self.tweets.count);
 
     } failure:^(NSError *error) {
         NSLog(@"Falied timeline loading");
@@ -158,7 +158,7 @@ TweetCell * _stubCell;
     
    }
 
-#pragma TableView
+#pragma mark TableView methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float additionalHeight =0;
     Tweet *tweet = self.tweets[indexPath.row];
@@ -175,9 +175,11 @@ TweetCell * _stubCell;
         NSLog(@" %@",tweet.text);
     }
     
-    NSLog(@"\n for %d Calc Height :%f  -- %f ",indexPath.row, textRect.size.height,additionalHeight);
+    NSLog(@"\n for %ld Calc Height :%f  -- %f ",(long)indexPath.row, textRect.size.height,additionalHeight);
     return 60 + additionalHeight+ textRect.size.height;
 }
+
+///             TODO FIGURE OUT THE STUBCELL APPROACH AS THE CURRENT ONE ISNT FULLPROOF
 
 //- (void)configureCell:(TweetCell *)tweetCell atIndexPath:(NSIndexPath *)indexPath
 //{
@@ -227,7 +229,8 @@ TweetCell * _stubCell;
     
     // Send tweet object via NSNC
     NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
-    [userInfo setObject:tweet forKey:@"tweet"];
+    [userInfo setObject:self.tweets forKey:@"tweet"];
+    [userInfo setObject:indexPath forKey:@"index"];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:clickNotification
      object:self userInfo:userInfo];

@@ -29,15 +29,6 @@
 }
 
 
-- (void)loginInternal {
-    [self.requestSerializer removeAccessToken];
-    [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"sptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
-        NSLog(@"Got the token");
-        NSString *authURL = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:authURL]];
-    } failure:^(NSError *error) {NSLog(@"didn't get the token!");}];
-}
-
 - (void)login {
     [self.requestSerializer removeAccessToken];
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"sptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
@@ -55,16 +46,6 @@
     [self.requestSerializer removeAccessToken];
 }
 
-
-//- (AFHTTPRequestOperation *)tweetWithSuccess:(NSDictionary *)param success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
-//    return [self POST:@"1.1/statuses/update.json" parameters:param success:success failure:failure];
-//}
-
-
-
--(AFHTTPRequestOperation *) userTimelineWithSuccess:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError*error))failure {
-    return [self GET:@"1.1/statuses/user_timeline.json" parameters:nil success:success failure:failure];
-}
 
 - (void) postTweet:(NSDictionary *)param success:(void (^)(Tweet* tweet))success failure:(void (^)(NSError *))failure{
     

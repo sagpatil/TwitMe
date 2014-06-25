@@ -110,8 +110,8 @@
                                   initWithTitle:@"Undo a Retweet not implemented yet"
                                   message:nil
                                   delegate:self
-                                  cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:@"OK", nil];
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
             [alert show];
             return;
         }
@@ -126,8 +126,6 @@
 }
 
 - (IBAction)onFavButtonClick:(id)sender {
-    
-    
     
     Tweet *tweet = self.tweet;
     // in Case of retweeted
@@ -168,7 +166,6 @@
         NSLog(@"retweet good");
                 tweet.retweeted=YES;
     } failure:^(NSError *error) {
-        
         NSLog(@"retweet BAd %@",error.description);
     }];
 }

@@ -17,17 +17,13 @@
 -(void) removeAccessToken;
 
 
--(AFHTTPRequestOperation *) userTimelineWithSuccess:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError*error))failure;
-
 - (void) retweet:(Tweet *)tweet success:(void (^)(Tweet* tweet))success failure:(void (^)(NSError *))failure;
 
 - (void)toggleFavoriteForTweet:(Tweet *)tweet success:(void (^)(Tweet *))success failure:(void (^)(NSError *))failure;
 
-
 - (void)currentUserWithSuccess:(void (^)(User* currentUser))success failure:(void (^)(NSError *error))failure;
+
 - (void)homeTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure;
-
-
 
 - (void) postTweet:(NSDictionary *)param success:(void (^)(Tweet* tweet))success failure:(void (^)(NSError *))failure;
 

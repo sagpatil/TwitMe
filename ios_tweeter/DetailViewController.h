@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @property (strong, nonatomic) Tweet *tweet;
+@property (strong, nonatomic) NSMutableArray* tweets;
 
 - (IBAction)onBackClicked:(id)sender;
 - (IBAction)onReplyClicked:(id)sender;

@@ -8,13 +8,16 @@
 
 #import "DetailViewController.h"
 #import "ComposeViewController.h"
+#import "ListViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+
 
 static NSString *clickNotification = @"showDetail";
 static NSString *replyNotification = @"replyTweet";
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *retweetedByHeight;
+@property (assign, nonatomic) long index;
 
 @end
 
@@ -36,7 +39,11 @@ static NSString *replyNotification = @"replyTweet";
 {
     if ([[notification name] isEqualToString:clickNotification]){
         NSDictionary* userInfo = notification.userInfo;
-        self.tweet = [userInfo objectForKey:@"tweet"];
+        self.tweets = [userInfo objectForKey:@"tweet"];
+        NSIndexPath *current = [userInfo objectForKey:@"index"];
+        self.tweet = self.tweets[current.row];
+        self.index = current.row;
+        
        // NSLog (@"Notification is successfully received! %@",self.tweet.text);
         [self refreshView];
     }
@@ -48,11 +55,53 @@ static NSString *replyNotification = @"replyTweet";
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
     [self refreshView];
+    
+    
+    UISwipeGestureRecognizer *swipeBack = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(popView)];
+    swipeBack.numberOfTouchesRequired = 1;
+    swipeBack.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeBack];
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextView)];
+    swipeDown.numberOfTouchesRequired = 1;
+    swipeDown.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeDown];
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(previousView)];
+    swipeUp.numberOfTouchesRequired = 1;
+    swipeUp.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeUp];
 }
 
+- (void)nextView
+{
+    if(self.index >= self.tweets.count - 1)
+        return;
+    
+    self.index++;
+    self.tweet = self.tweets[self.index];
+   [self refreshView];
+    
+}
+
+- (void)previousView
+{
+    if(self.index<1)
+        return;
+    
+    self.index--;
+    self.tweet = self.tweets[self.index];
+    [self refreshView];
+    
+}
+
+- (void)popView
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -152,8 +201,8 @@ static NSString *replyNotification = @"replyTweet";
                                   initWithTitle:@"Undo a Retweet not implemented yet"
                                   message:nil
                                   delegate:self
-                                  cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:@"OK", nil];
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles: nil];
             [alert show];
             return;
         }
