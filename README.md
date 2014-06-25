@@ -29,14 +29,15 @@ Features
 
 
 - [x] Basic Swipe Gestures for loading next / previous tweets in detail view
- 
+
+- [x] Detect and show links in webView
 
 See issues for bugs 
 
 
 Walkthrough
 ------------
-![Video Walkthrough](demo.gif)
+![Video Walkthrough](demo2.gif)
 
 Credits
 ---------
