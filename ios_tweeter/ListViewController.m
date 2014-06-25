@@ -20,6 +20,7 @@ static NSString *replyNotification = @"replyTweet";
 static NSString *newTweetNotification = @"newTweet";
 
 @interface ListViewController ()
+@property(strong,nonatomic) TweetCell *stubCell;
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
 @property (strong, nonatomic) NSString* lastTweetId; // tweet id of last row in table. will be sent to get the older tweets for infinite scrolling
 
@@ -59,14 +60,12 @@ static NSString *newTweetNotification = @"newTweet";
 
 @implementation ListViewController
 
-TweetCell * _stubCell;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
-        NSLog(@"Init");
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(tweetNotificationReceived:)
                                                      name:newTweetNotification
@@ -100,7 +99,8 @@ TweetCell * _stubCell;
     
     UINib *customNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
     [self.tabelView registerNib:customNib forCellReuseIdentifier:@"TweetCell"];
-    _stubCell = [customNib instantiateWithOwner:nil options:nil][0];
+    self.stubCell= [self.tabelView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    
     
     //self.tweets = [[NSMutableArray alloc]init];
     
@@ -159,46 +159,24 @@ TweetCell * _stubCell;
    }
 
 #pragma mark TableView methods
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    float additionalHeight =0;
-    Tweet *tweet = self.tweets[indexPath.row];
-    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-    CGSize boundingSize = CGSizeMake([cell tweetTextLabel].frame.size.width, FLT_MAX);
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:13];
-    
-    CGRect textRect = [tweet.text boundingRectWithSize:boundingSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes: @{NSFontAttributeName:font} context:nil];
-    [[cell tweetTextLabel] setFrame:textRect];
-    
-    
-    if (tweet.orignalTweet) {
-        additionalHeight = 15;
-        NSLog(@" %@",tweet.text);
-    }
-    
-    NSLog(@"\n for %ld Calc Height :%f  -- %f ",(long)indexPath.row, textRect.size.height,additionalHeight);
-    return 60 + additionalHeight+ textRect.size.height;
+
+- (void)configureCell:(TweetCell *)tweetCell atIndexPath:(NSIndexPath *)indexPath
+{
+     [tweetCell initializeWithValues:self.tweets[indexPath.row]];
 }
 
-///             TODO FIGURE OUT THE STUBCELL APPROACH AS THE CURRENT ONE ISNT FULLPROOF
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self configureCell:self.stubCell atIndexPath:indexPath];
+    [self.stubCell layoutSubviews];
+    
+    CGSize size = [_stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height+1;
+}
 
-//- (void)configureCell:(TweetCell *)tweetCell atIndexPath:(NSIndexPath *)indexPath
-//{
-//    tweetCell.tweet = self.tweets[indexPath.row];
-//    
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self configureCell:_stubCell atIndexPath:indexPath];
-//    [_stubCell layoutSubviews];
-//    
-//    CGSize size = [_stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    NSLog(@"--> height: %f", size.height);
-//    return size.height+1;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return UITableViewAutomaticDimension;
-//    
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+    
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -276,9 +254,6 @@ TweetCell * _stubCell;
 - (IBAction)onSignoutTapped:(id)sender{
     [User removeCurrentUser];
     LoginViewController *lVC = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-    
-    NSLog(@"\n Presented :%@", self.presentedViewController);
-    NSLog(@"\n Presenting %@", self.presentingViewController);
     
     // [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [self presentViewController:lVC animated:YES completion:nil];
