@@ -11,9 +11,12 @@
 #import "ComposeViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface TweetCell()
+static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 
+@interface TweetCell()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *retweetedByLabelHeight;
+
+- (IBAction)ProfileImageHiddenButtonClicked:(id)sender;
 
 @end
 
@@ -171,4 +174,15 @@
 }
 
 
+//Load the profile View.. This transparent button is actually on top of imageView
+- (IBAction)ProfileImageHiddenButtonClicked:(id)sender {
+    
+    NSLog(@"Image clicked");
+    // Send tweet object via NSNC
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+    [userInfo setObject:self.tweet.user forKey:@"profileImageClicked"];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:kCellProfileImageClicked
+     object:self userInfo:userInfo];
+}
 @end

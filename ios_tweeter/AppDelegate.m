@@ -12,6 +12,7 @@
 #import "ListViewController.h"
 #import "User.h"
 #import "MBProgressHUD.h"
+#import "ProfileViewController.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -47,6 +48,7 @@
         
     } else {
         self.window.rootViewController = [[LoginViewController alloc]init];
+   //     self.window.rootViewController = [[ProfileViewController alloc]init];
     }
 
     

@@ -10,8 +10,8 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 static int TweetLength = 140;
-static NSString *replyNotification = @"replyTweet";
-static NSString *newTweetNotification = @"newTweet";
+static NSString *kreplyNotification = @"replyTweet";
+static NSString *knewTweetNotification = @"newTweet";
 
 @interface ComposeViewController ()
 @property (nonatomic,assign) unsigned long textCount;
@@ -25,7 +25,7 @@ static NSString *newTweetNotification = @"newTweet";
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(tweetNotificationReceived:)
-                                                     name:replyNotification
+                                                     name:kreplyNotification
                                                    object:nil];
 
     
@@ -35,7 +35,7 @@ static NSString *newTweetNotification = @"newTweet";
 
 - (void) tweetNotificationReceived:(NSNotification *) notification
 {
-    if ([[notification name] isEqualToString:replyNotification]){
+    if ([[notification name] isEqualToString:kreplyNotification]){
         NSDictionary* userInfo = notification.userInfo;
         NSString *replyTo = [userInfo objectForKey:@"reply"];
          NSLog (@"Notification is successfully received! %@",replyTo);
@@ -93,7 +93,7 @@ static NSString *newTweetNotification = @"newTweet";
             NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
             [userInfo setObject:tweet forKey:@"newTweet"];
             [[NSNotificationCenter defaultCenter]
-             postNotificationName:newTweetNotification
+             postNotificationName:knewTweetNotification
              object:self userInfo:userInfo];
             
             

@@ -34,6 +34,10 @@
 		F1825C9D1954815400631695 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1825C9B1954815400631695 /* DetailViewController.m */; };
 		F1825C9E1954815400631695 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1825C9C1954815400631695 /* DetailViewController.xib */; };
 		F1825CA11954FEB800631695 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = F1825CA01954FEB800631695 /* Tweet.m */; };
+		F18E400D195D1D8A00688D62 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E400B195D1D8A00688D62 /* ProfileViewController.m */; };
+		F18E400E195D1D8A00688D62 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F18E400C195D1D8A00688D62 /* ProfileViewController.xib */; };
+		F18E4011195D1F0500688D62 /* ProfileBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F18E4010195D1F0500688D62 /* ProfileBannerView.xib */; };
+		F18E4014195D1F1C00688D62 /* ProfileBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E4013195D1F1C00688D62 /* ProfileBannerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,12 @@
 		F1825C9C1954815400631695 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		F1825C9F1954FEB800631695 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		F1825CA01954FEB800631695 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		F18E400A195D1D8A00688D62 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F18E400B195D1D8A00688D62 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F18E400C195D1D8A00688D62 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		F18E4010195D1F0500688D62 /* ProfileBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileBannerView.xib; sourceTree = "<group>"; };
+		F18E4012195D1F1C00688D62 /* ProfileBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileBannerView.h; sourceTree = "<group>"; };
+		F18E4013195D1F1C00688D62 /* ProfileBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileBannerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,18 +160,10 @@
 		F1825C431953866D00631695 /* ios_tweeter */ = {
 			isa = PBXGroup;
 			children = (
+				F1825C7B1953D9F600631695 /* Model */,
+				F18E4006195D1C1600688D62 /* ViewControllers */,
 				F1825C851954095000631695 /* Views */,
 				F1825C7A1953D9E600631695 /* API */,
-				F1825C7B1953D9F600631695 /* Model */,
-				F1825C8B19540A7500631695 /* ComposeViewController.h */,
-				F1825C8C19540A7500631695 /* ComposeViewController.m */,
-				F1825C8D19540A7500631695 /* ComposeViewController.xib */,
-				F1825C7F1953E38400631695 /* ListViewController.h */,
-				F1825C801953E38400631695 /* ListViewController.m */,
-				F1825C811953E38400631695 /* ListViewController.xib */,
-				F1825C9A1954815400631695 /* DetailViewController.h */,
-				F1825C9B1954815400631695 /* DetailViewController.m */,
-				F1825C9C1954815400631695 /* DetailViewController.xib */,
 				F1825C4C1953866D00631695 /* AppDelegate.h */,
 				F1825C4D1953866D00631695 /* AppDelegate.m */,
 				F1825C4F1953866D00631695 /* Images.xcassets */,
@@ -222,14 +224,36 @@
 		F1825C851954095000631695 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F1825C6F195386AA00631695 /* LoginViewController.h */,
-				F1825C70195386AA00631695 /* LoginViewController.m */,
-				F1825C71195386AA00631695 /* LoginViewController.xib */,
+				F18E4010195D1F0500688D62 /* ProfileBannerView.xib */,
+				F18E4012195D1F1C00688D62 /* ProfileBannerView.h */,
+				F18E4013195D1F1C00688D62 /* ProfileBannerView.m */,
 				F1825C951954110000631695 /* TweetCell.h */,
 				F1825C961954110000631695 /* TweetCell.m */,
 				F1825C971954110000631695 /* TweetCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		F18E4006195D1C1600688D62 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1825C8B19540A7500631695 /* ComposeViewController.h */,
+				F1825C8C19540A7500631695 /* ComposeViewController.m */,
+				F1825C8D19540A7500631695 /* ComposeViewController.xib */,
+				F1825C7F1953E38400631695 /* ListViewController.h */,
+				F1825C801953E38400631695 /* ListViewController.m */,
+				F1825C811953E38400631695 /* ListViewController.xib */,
+				F1825C9A1954815400631695 /* DetailViewController.h */,
+				F1825C9B1954815400631695 /* DetailViewController.m */,
+				F1825C9C1954815400631695 /* DetailViewController.xib */,
+				F18E400A195D1D8A00688D62 /* ProfileViewController.h */,
+				F18E400B195D1D8A00688D62 /* ProfileViewController.m */,
+				F18E400C195D1D8A00688D62 /* ProfileViewController.xib */,
+				F1825C6F195386AA00631695 /* LoginViewController.h */,
+				F1825C70195386AA00631695 /* LoginViewController.m */,
+				F1825C71195386AA00631695 /* LoginViewController.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +333,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18E400E195D1D8A00688D62 /* ProfileViewController.xib in Resources */,
 				F1825C481953866D00631695 /* InfoPlist.strings in Resources */,
 				F1825C8F19540A7500631695 /* ComposeViewController.xib in Resources */,
 				F1825C9E1954815400631695 /* DetailViewController.xib in Resources */,
+				F18E4011195D1F0500688D62 /* ProfileBannerView.xib in Resources */,
 				F1825C501953866D00631695 /* Images.xcassets in Resources */,
 				F1825C831953E38400631695 /* ListViewController.xib in Resources */,
 				F1825C73195386AA00631695 /* LoginViewController.xib in Resources */,
@@ -376,6 +402,8 @@
 				F1825C4A1953866D00631695 /* main.m in Sources */,
 				F1825C72195386AA00631695 /* LoginViewController.m in Sources */,
 				F1825CA11954FEB800631695 /* Tweet.m in Sources */,
+				F18E4014195D1F1C00688D62 /* ProfileBannerView.m in Sources */,
+				F18E400D195D1D8A00688D62 /* ProfileViewController.m in Sources */,
 				F1825C8E19540A7500631695 /* ComposeViewController.m in Sources */,
 				F1825C981954110000631695 /* TweetCell.m in Sources */,
 			);

@@ -10,6 +10,7 @@
 #import "TweetCell.h"
 #import "DetailViewController.h"
 #import "ComposeViewController.h"
+#import "ProfileViewController.h"
 #import "LoginViewController.h"
 #import "User.h"
 #import "Tweet.h"
@@ -18,6 +19,7 @@
 static NSString *clickNotification = @"showDetail";
 static NSString *replyNotification = @"replyTweet";
 static NSString *newTweetNotification = @"newTweet";
+static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 
 @interface ListViewController ()
 @property(strong,nonatomic) TweetCell *stubCell;
@@ -66,11 +68,8 @@ static NSString *newTweetNotification = @"newTweet";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(tweetNotificationReceived:)
-                                                     name:newTweetNotification
-                                                   object:nil];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweetNotificationReceived:) name:newTweetNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showProfile:) name:kCellProfileImageClicked object:nil];
 
     }
     return self;
@@ -88,6 +87,21 @@ static NSString *newTweetNotification = @"newTweet";
         [self.tabelView reloadData];
     }
 }
+
+
+- (void) showProfile:(NSNotification *) notification
+{ NSDictionary* userInfo = notification.userInfo;
+    User *user = [userInfo objectForKey:@"profileImageClicked"];
+    
+    NSLog (@"Notification is successfully received in ListView %@",user.name);
+    
+    
+    ProfileViewController *profileVC = [[ProfileViewController alloc]initWithNibName:@"ProfileViewController" bundle:nil];
+    profileVC.user = user;
+    [self presentViewController:profileVC animated:YES completion:nil];
+
+}
+
 - (void)viewDidLoad
 {
 
@@ -194,14 +208,9 @@ static NSString *newTweetNotification = @"newTweet";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"clicked %ld", (long)indexPath.row);
-   // Tweet *tweet = self.tweets[indexPath.row];
     DetailViewController *detailView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     [self.tabelView deselectRowAtIndexPath:indexPath animated:YES];
-//    detailView.tweetTextLabel.text = tweet.text;
-//    detailView.profileNameLabel.text = tweet.user.name;
-//    detailView.tweetHandleLabel.text = tweet.user.screenName;
-//    
+
     [self.navigationController pushViewController:detailView animated:YES];
     
     

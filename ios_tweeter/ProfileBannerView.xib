@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileBannerView">
+            <connections>
+                <outlet property="bannerImageView" destination="5QO-qJ-Ka8" id="mKq-gS-hu7"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="ciq-8J-33U"/>
+                <outlet property="handleLabel" destination="ZHF-Qs-FaG" id="JGa-Jt-SCn"/>
+                <outlet property="nameLabel" destination="I5T-AF-YMS" id="5iK-90-9Uv"/>
+                <outlet property="profileImageView" destination="8by-pt-EYe" id="Tda-1a-6mi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sagar Patil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-AF-YMS" userLabel="name">
+                    <rect key="frame" x="118" y="80" width="84" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="lbS-Oe-AKq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@sagar__sf" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHF-Qs-FaG" userLabel="handle">
+                    <rect key="frame" x="123" y="109" width="74" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="lxG-5L-hur"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8by-pt-EYe" userLabel="profileImage">
+                    <rect key="frame" x="128" y="7" width="65" height="65"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="3jd-ZT-JEZ"/>
+                        <constraint firstAttribute="height" constant="65" id="pea-0k-lcP"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-qJ-Ka8" userLabel="backgroundImage">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="I5T-AF-YMS" secondAttribute="centerX" id="2gH-lk-Gfd"/>
+                <constraint firstItem="5QO-qJ-Ka8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7K9-gC-OAj"/>
+                <constraint firstAttribute="centerX" secondItem="ZHF-Qs-FaG" secondAttribute="centerX" id="Dx2-1k-pqz"/>
+                <constraint firstItem="ZHF-Qs-FaG" firstAttribute="top" secondItem="I5T-AF-YMS" secondAttribute="bottom" constant="8" id="NXy-xD-c4p"/>
+                <constraint firstAttribute="bottom" secondItem="5QO-qJ-Ka8" secondAttribute="bottom" id="SFk-Tw-SM4"/>
+                <constraint firstItem="5QO-qJ-Ka8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TwE-Qg-g5S"/>
+                <constraint firstItem="I5T-AF-YMS" firstAttribute="top" secondItem="8by-pt-EYe" secondAttribute="bottom" constant="8" id="ZKy-tk-r1A"/>
+                <constraint firstAttribute="trailing" secondItem="5QO-qJ-Ka8" secondAttribute="trailing" id="fVy-XO-T7g"/>
+                <constraint firstItem="8by-pt-EYe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="lhD-PY-aLZ"/>
+                <constraint firstAttribute="centerX" secondItem="8by-pt-EYe" secondAttribute="centerX" id="rjl-9u-Yyu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
