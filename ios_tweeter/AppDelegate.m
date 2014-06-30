@@ -13,6 +13,7 @@
 #import "User.h"
 #import "MBProgressHUD.h"
 #import "ProfileViewController.h"
+#import "MainViewController.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -48,7 +49,6 @@
         
     } else {
         self.window.rootViewController = [[LoginViewController alloc]init];
-   //     self.window.rootViewController = [[ProfileViewController alloc]init];
     }
 
     
@@ -87,10 +87,12 @@
 #pragma mark Custom methods
 - (void)showTimeLine{
     
-    ListViewController *lVC = [[ListViewController alloc] init];
-    UINavigationController *nVC = [[UINavigationController alloc] initWithRootViewController:lVC];
-    self.window.rootViewController = nVC;
-    nVC.navigationBar.hidden = YES;
+//    ListViewController *lVC = [[ListViewController alloc] init];
+//    UINavigationController *nVC = [[UINavigationController alloc] initWithRootViewController:lVC];
+//    self.window.rootViewController = nVC;
+//    nVC.navigationBar.hidden = YES;
+
+    self.window.rootViewController = [[MainViewController alloc]init];
 }
 
 

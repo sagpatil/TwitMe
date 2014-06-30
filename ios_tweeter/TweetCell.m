@@ -175,12 +175,12 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 
 
 //Load the profile View.. This transparent button is actually on top of imageView
+
 - (IBAction)ProfileImageHiddenButtonClicked:(id)sender {
-    
-    NSLog(@"Image clicked");
+    Tweet *t= self.tweet.orignalTweet ? self.tweet.orignalTweet : self.tweet;
     // Send tweet object via NSNC
     NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
-    [userInfo setObject:self.tweet.user forKey:@"profileImageClicked"];
+    [userInfo setObject:t.user forKey:@"profileImageClicked"];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kCellProfileImageClicked
      object:self userInfo:userInfo];

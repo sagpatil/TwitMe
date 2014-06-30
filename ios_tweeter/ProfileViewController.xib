@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="followersCountLabel" destination="dmk-7q-68R" id="27T-Bl-zHa"/>
                 <outlet property="followingCountLabel" destination="RlT-Qr-wQo" id="Qts-pe-TFN"/>
+                <outlet property="hbButton" destination="UAZ-Uz-psb" id="rtK-IM-YlA"/>
                 <outlet property="profileBannerView" destination="xTe-Me-Uq4" id="x6D-qu-oB7"/>
                 <outlet property="tableView" destination="wx8-7u-oE3" id="0Y4-XF-bpb"/>
                 <outlet property="tweetCountLabel" destination="q83-Mj-RrF" id="dK9-qD-JmO"/>
@@ -103,11 +104,11 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAZ-Uz-psb">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAZ-Uz-psb">
                             <rect key="frame" x="10" y="20" width="60" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="Back">
+                            <state key="normal" title="&lt;">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

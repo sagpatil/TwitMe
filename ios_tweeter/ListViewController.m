@@ -26,6 +26,9 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
 @property (strong, nonatomic) NSString* lastTweetId; // tweet id of last row in table. will be sent to get the older tweets for infinite scrolling
 
+- (IBAction)onNewTweetTapped:(id)sender;
+- (IBAction)onHBTapped:(id)sender;
+
 @end
 
 
@@ -107,7 +110,7 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 
     [super viewDidLoad];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+    NSLog(@"List View Did Load");
     self.tabelView.dataSource = self;
     self.tabelView.delegate = self;
     
@@ -142,6 +145,8 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 -(void) getTimeLineTweets{
     
     TwitterClient *client = [TwitterClient instance];
+    if (self.feedType == TIMELINE) {
+    
     [client homeTimelineWithSuccess:nil
                             success:^(NSArray *tweets) {
                                 self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
@@ -152,6 +157,20 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
                                 NSLog(@"Falied timeline loading");
                                 
                             }];
+    } else if (self.feedType == MENTIONS) {
+        [client mentionsTimelineWithSuccess:nil
+                                success:^(NSArray *tweets) {
+                                    self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
+                                    [self.tabelView reloadData];
+                                    NSLog(@"Success Loading tweets %lu",(unsigned long)self.tweets.count);
+                                    
+                                } failure:^(NSError *error) {
+                                    NSLog(@"Falied timeline loading");
+                                    
+                                }];
+        
+    }
+    
     
 }
 
@@ -257,15 +276,26 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 - (IBAction)onNewTweetTapped:(id)sender {
     ComposeViewController *newTweetVC = [[ComposeViewController alloc]initWithNibName:@"ComposeViewController" bundle:nil];
     [self presentViewController:newTweetVC animated:YES completion:nil];
-    
 }
 
-- (IBAction)onSignoutTapped:(id)sender{
-    [User removeCurrentUser];
-    LoginViewController *lVC = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-    
-    // [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-    [self presentViewController:lVC animated:YES completion:nil];
-    
+- (IBAction)onHBTapped:(id)sender{
+ 
+    UIButton *button = sender;
+	switch (button.tag) {
+		case 0: {
+               NSLog(@"HBTapped List 0 ");
+			[_delegate movePanelToOriginalPosition];
+			break;
+		}
+			
+		case 1: {
+               NSLog(@"HBTapped list 1");
+			[_delegate movePanelRight];
+			break;
+		}
+			
+		default:
+			break;
+	}
 }
 @end

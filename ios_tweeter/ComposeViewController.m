@@ -41,7 +41,7 @@ static NSString *knewTweetNotification = @"newTweet";
          NSLog (@"Notification is successfully received! %@",replyTo);
         self.tweetTextView.text = [NSString stringWithFormat:@"@%@",replyTo];
         self.textCount = self.tweetTextView.text.length;
-        self.textCountLabel.text = [NSString stringWithFormat:@"%lu",TweetLength-self.tweetTextView.text.length];
+        self.textCountLabel.text = [NSString stringWithFormat:@"%d",TweetLength-self.tweetTextView.text.length];
     }
 }
 

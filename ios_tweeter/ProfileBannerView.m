@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Patil, Sagar. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "ProfileBannerView.h"
 
@@ -29,24 +30,23 @@
     return self;
 }
 
-//
-//+ (id)profileBannerView{
-//    ProfileBannerView *customView = [[[NSBundle mainBundle] loadNibNamed:@"ProfileBannerView" owner:nil options:nil] lastObject];
-//    
-//    // make sure customView is not nil or the wrong class!
-//    if ([customView isKindOfClass:[ProfileBannerView class]])
-//        return customView;
-//    else
-//        return nil;
-//}
-
 -(void)didMoveToWindow{
     NSLog(@"Loading elemensts in custom View");
     self.nameLabel.text = self.user.name;
-    self.handleLabel.text = _user.screenName;
+    self.handleLabel.text = [NSString stringWithFormat:@"@%@",self.user.screenName];
     [self.profileImageView setImageWithURL:self.user.profileImageURL];
-    [self.bannerImageView setImageWithURL:self.user.bannerImageURL];
-    [self.bannerImageView.superview sendSubviewToBack:self.bannerImageView];
+    if(self.user.bannerImageURL.absoluteString)
+    {
+        [self.bannerImageView setImageWithURL:self.user.bannerImageURL];
+        [self.bannerImageView.superview sendSubviewToBack:self.bannerImageView];
+        
+        
+        self.profileImageView.layer.masksToBounds = YES;
+        self.profileImageView.layer.borderColor = [UIColor blackColor].CGColor;
+        self.profileImageView.layer.borderWidth = 2;
+ 
+    }
+        NSLog(@"Banner image %@",self.user.bannerImageURL.absoluteString);
 }
 
 

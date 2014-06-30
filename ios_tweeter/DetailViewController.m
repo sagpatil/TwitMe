@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "ComposeViewController.h"
 #import "ListViewController.h"
+#import "webViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 
@@ -143,11 +144,6 @@ static NSString *replyNotification = @"replyTweet";
     
     self.tweetContentView.delegate = self;
      self.tweetContentView.text = tweet.text;
-
-    self.tweetWebView.hidden= YES;
-    
-    
-    
    
     //self.tweetTextLabel.text = tweet.text;
     self.profileNameLabel.text = tweet.user.name;
@@ -172,10 +168,10 @@ static NSString *replyNotification = @"replyTweet";
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
     NSLog(@"IN webView");
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:URL];
-    
-    self.tweetWebView.hidden = NO;
-    [self.tweetWebView loadRequest:requestObj];
+   
+    webViewController *webVC = [[webViewController alloc]initWithNibName:@"webViewController" bundle:nil];
+    webVC.url = URL;
+    [self presentViewController:webVC animated:YES completion:nil];
     
     return NO;
 }

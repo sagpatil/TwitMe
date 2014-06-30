@@ -10,6 +10,7 @@
 #import "ProfileBannerView.h"
 #import "ComposeViewController.h"
 
+
 static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 
 @interface ProfileViewController ()
@@ -42,19 +43,17 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
     if ([[notification name] isEqualToString:kCellProfileImageClicked]){
         NSDictionary* userInfo = notification.userInfo;
         self.user = [userInfo objectForKey:@"profileImageClicked"];
-
-        NSLog (@"Notification is successfully received! %@",self.user.name);
         [self refreshView];
     }
 }
 
 - (void)refreshView
 {
-    self.tweetCountLabel.text = [NSString stringWithFormat: @"%ld",self.user.tweetCount];
+    self.tweetCountLabel.text = [NSString stringWithFormat: @"%d",self.user.tweetCount];
     
-    self.followersCountLabel.text = [NSString stringWithFormat: @"%ld",self.user.followerCount];
+    self.followersCountLabel.text = [NSString stringWithFormat: @"%d",self.user.followerCount];
     
-    self.followingCountLabel.text = [NSString stringWithFormat: @"%ld",self.user.followingCount];
+    self.followingCountLabel.text = [NSString stringWithFormat: @"%d",self.user.followingCount];
     self.profileBannerView.user = self.user;
     
 }
@@ -62,6 +61,8 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    NSLog(@"Profile VC did load");
     [self refreshView];
 }
 
@@ -72,7 +73,25 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 }
 
 - (IBAction)onBackButton:(id)sender {
-      [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    //  [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+ 
+    UIButton *button = sender;
+	switch (button.tag) {
+		case 0: {
+            NSLog(@"HBTapped profile 0 ");
+			[_delegate movePanelToOriginalPosition];
+			break;
+		}
+			
+		case 1: {
+            NSLog(@"HBTapped profile 1");
+			[_delegate movePanelRight];
+			break;
+		}
+			
+		default:
+			break;
+	}
 }
 
 - (IBAction)onNewTweet:(id)sender {

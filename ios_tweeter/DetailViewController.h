@@ -23,11 +23,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *tweetContentView;
-
-@property (weak, nonatomic) IBOutlet UIWebView *tweetWebView;
-
-
-
 @property (strong, nonatomic) Tweet *tweet;
 @property (strong, nonatomic) NSMutableArray* tweets;
 
