@@ -160,6 +160,56 @@
     
 }
 
+- (void)userTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure
+{
+    [self GET:@"1.1/statuses/user_timeline.json"
+   parameters:param
+      success:^(AFHTTPRequestOperation *operation, id response){
+          NSDictionary *jsonDict = response;
+          NSError *error = nil;
+          NSMutableArray *tweets = [[NSMutableArray alloc]init];
+          
+          for (int i = 0; i<jsonDict.count; i++){
+              //    NSLog(@"\n\n\n%@", response[1]);
+              
+              Tweet *t = [[Tweet alloc]init];
+              NSDictionary *currTweet = response[i];
+              t = [MTLJSONAdapter modelOfClass: Tweet.class fromJSONDictionary: currTweet error: &error];
+              
+              //extract the user info from the tweet
+              User* currentTweetUser = [[User alloc] init];
+              NSDictionary *userInfo = (NSDictionary *)t.user;
+              currentTweetUser = [MTLJSONAdapter modelOfClass: User.class fromJSONDictionary: userInfo error: &error];
+              t.user = currentTweetUser;
+              
+              // in case if its a retweet process that tweet again like orignal
+              if (t.orignalTweet) {
+                  Tweet *ot = [[Tweet alloc]init];
+                  NSDictionary *currTweet = [[NSDictionary alloc]init];
+                  currTweet = (NSDictionary *)t.orignalTweet;
+                  ot = [MTLJSONAdapter modelOfClass: Tweet.class fromJSONDictionary: currTweet error: &error];
+                  
+                  //extract the user info from the tweet
+                  User* currentTweetUser = [[User alloc] init];
+                  NSDictionary *userInfo = (NSDictionary *)ot.user;
+                  currentTweetUser = [MTLJSONAdapter modelOfClass: User.class fromJSONDictionary: userInfo error: &error];
+                  ot.user = currentTweetUser;
+                  t.orignalTweet = ot;
+                  t.text = ot.text;  // change the tweet text to oringnal tweet text
+              }
+              
+              [tweets addObject:t];
+              
+          }
+          success(tweets);
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"API Failed to get Tweets: %@", error);
+          failure(error);
+      }];
+    
+}
+
 
 - (void)mentionsTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure
 {

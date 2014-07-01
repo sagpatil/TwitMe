@@ -82,13 +82,6 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kHBbuttonCLicked
      object:self userInfo:userInfo];
-    
-    
-    //    self.window.rootViewController = nVC;
-    //    nVC.navigationBar.hidden = YES;
-//    UIView *timeLineView = ((UIViewController *)self.timelineViewController).view;
-//    timeLineView.frame =self.contentView.frame;
-//    [self.contentView addSubview:timeLineView];
 }
 
 - (IBAction)onProfile:(id)sender {
@@ -122,8 +115,6 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
 - (IBAction)onLogOutTap:(id)sender {
     [User removeCurrentUser];
     LoginViewController *lVC = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-    
-    // [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [self presentViewController:lVC animated:YES completion:nil];
 }
 @end

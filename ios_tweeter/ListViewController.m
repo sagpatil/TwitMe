@@ -25,6 +25,7 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
 @property(strong,nonatomic) TweetCell *stubCell;
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
 @property (strong, nonatomic) NSString* lastTweetId; // tweet id of last row in table. will be sent to get the older tweets for infinite scrolling
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 - (IBAction)onNewTweetTapped:(id)sender;
 - (IBAction)onHBTapped:(id)sender;
@@ -146,7 +147,7 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
     
     TwitterClient *client = [TwitterClient instance];
     if (self.feedType == TIMELINE) {
-    
+    self.titleLabel.text = @"Home";
     [client homeTimelineWithSuccess:nil
                             success:^(NSArray *tweets) {
                                 self.tweets = [[NSMutableArray alloc]initWithArray:tweets];
@@ -158,6 +159,7 @@ static NSString *kCellProfileImageClicked = @"CellProfileImageClicked";
                                 
                             }];
     } else if (self.feedType == MENTIONS) {
+            self.titleLabel.text = @"Mentions";
         [client mentionsTimelineWithSuccess:nil
                                 success:^(NSArray *tweets) {
                                     self.tweets = [[NSMutableArray alloc]initWithArray:tweets];

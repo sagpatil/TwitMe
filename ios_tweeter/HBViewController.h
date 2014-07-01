@@ -14,8 +14,7 @@
 - (void)imageSelected:(UIImage *)image withTitle:(NSString *)imageTitle withCreator:(NSString *)imageCreator;
 
 @required
-- (void)loadVC:(int)vc;
-- (void)loadCustom;
+//
 
 @end
 

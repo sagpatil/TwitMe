@@ -21,7 +21,7 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
 #define SLIDE_TIMING .25
 #define PANEL_WIDTH 60
 
-@interface MainViewController () 
+@interface MainViewController ()
 @property (nonatomic, strong) ProfileViewController *profileViewController;
 @property (nonatomic, strong) ListViewController *timelineViewController;
 @property (nonatomic, strong) ListViewController *mentionsViewController;
@@ -44,67 +44,68 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
 {
     [super viewDidLoad];
     NSLog(@"Main ViewDid Load");
-    self.profileViewController = [[ProfileViewController alloc]init];
-     self.profileViewController.user = [User currentUser];
-    self.profileViewController.hbButton.tag = 0;
-    self.profileViewController.delegate = self;
-    self.profileViewController.view.tag =CENTER_TAG;
+    
+    [self loadVC:TimeLineVC];
     
     
-    self.timelineViewController = [[ListViewController alloc] init];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineViewController];
-    self.timelineViewController.feedType = TIMELINE;
-    self.navigationController.navigationBarHidden = YES;
-    self.navigationController.view.tag =CENTER_TAG;
-    self.navigationController.delegate =self;
-    self.timelineViewController.delegate =self;
     
-    self.mentionsViewController = [[ListViewController alloc] init];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.mentionsViewController];
-    self.mentionsViewController.feedType = MENTIONS;
-    self.navigationController.navigationBarHidden = YES;
-    self.navigationController.view.tag =CENTER_TAG;
-    self.navigationController.delegate =self;
-    self.mentionsViewController.delegate =self;
-    
-    [self loadVC:MentionsVC];
-    
-    [self setupGestures];
-
 }
-
-- (void) loadCustom{
-    
-    NSLog(@"from HBVC");
-}
-
 
 
 - (void) loadVC:(int)vc{
     NSLog(@"In Load VC %d", vc);
     switch (vc) {
         case TimeLineVC:
+            
+            self.timelineViewController = [[ListViewController alloc] init];
+            self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineViewController];
+            self.timelineViewController.feedType = TIMELINE;
+            self.navigationController.navigationBarHidden = YES;
+            self.navigationController.view.tag =CENTER_TAG;
+            self.navigationController.delegate =self;
+            self.timelineViewController.delegate =self;
             self.currentViewController = self.navigationController;
+            
             break;
+            
         case ProfileVC:
+            self.profileViewController = [[ProfileViewController alloc]init];
+            self.profileViewController.user = [User currentUser];
+            self.profileViewController.hbButton.tag = 0;
+            self.profileViewController.delegate = self;
+            self.profileViewController.view.tag =CENTER_TAG;
+            self.profileViewController.comingFromHBVC = YES;
+            
             self.currentViewController = self.profileViewController;
             break;
+            
         case MentionsVC:
-              self.timelineViewController.feedType = MENTIONS;            
+            self.mentionsViewController = [[ListViewController alloc] init];
+            self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.mentionsViewController];
+            self.mentionsViewController.feedType = MENTIONS;
+            self.navigationController.navigationBarHidden = YES;
+            self.navigationController.view.tag =CENTER_TAG;
+            self.navigationController.delegate =self;
+            self.mentionsViewController.delegate =self;
+            self.timelineViewController.feedType = MENTIONS;
+            
             self.currentViewController = self.navigationController;
             break;
             
         default:
             break;
     }
- 
-    UIView *currentView = ((UIViewController *)self.timelineViewController).view;
-    self.currentViewController.view.frame = currentView.frame;
-
+    
+    //   UIView *currentView = ((UIViewController *)self.timelineViewController).view;
+    // self.currentViewController.view.frame = currentView.frame;
+    
     
     [self.view addSubview:self.currentViewController.view];
     [self addChildViewController:self.currentViewController];
-    [self movePanelToOriginalPosition];
+    
+    [self setupGestures];
+    
+    //[self movePanelToOriginalPosition];
 }
 
 #pragma mark - setup
@@ -142,16 +143,18 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
         // send HBview back and show timeLIne view
         [self.view sendSubviewToBack:childView];
         [[sender view] bringSubviewToFront:[pan view]];
-    
+        
     }
-
+    
     
     if([pan state] == UIGestureRecognizerStateEnded) {
         
         if(velocity.x > 0) {
-             NSLog(@"gesture went right + ended");
+
+            NSLog(@"gesture went right + ended");
         } else {
-             NSLog(@"gesture went left + ended");
+           
+            NSLog(@"gesture went left + ended");
         }
         
         if (!_showPanel) {
@@ -164,13 +167,14 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
     }
     if([pan state] == UIGestureRecognizerStateChanged) {
         if(velocity.x > 0) {
-             NSLog(@"gesture went right + chnages");
+            NSLog(@"gesture went right + chnages");
         } else {
-             NSLog(@"gesture went left + chnages");
+               velocity.x = 0;
+            NSLog(@"gesture went left + chnages");
         }
         
         // Are you more than halfway? If so, show the panel when done dragging by setting this value to YES (1).
-        self.showPanel = abs([sender view].center.x - self.currentViewController.view.frame.size.width/2) > self.currentViewController.view.frame.size.width/2;
+        self.showPanel = ([sender view].center.x - self.currentViewController.view.frame.size.width/2) > self.currentViewController.view.frame.size.width/2;
         NSLog(@" show Panel panel %d",self.showPanel);
         
         // Allow dragging only in x-coordinates by only updating the x-coordinate with translation position.
@@ -179,14 +183,14 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
         
         // If you needed to check for a change in direction, you could use this code to do so.
         if(velocity.x*_preVelocity.x + velocity.y*_preVelocity.y > 0) {
-             NSLog(@"same direction");
+            NSLog(@"same direction");
         } else {
-             NSLog(@"opposite direction");
+            NSLog(@"opposite direction");
         }
         
         _preVelocity = velocity;
     }
-
+    
 }
 
 #pragma mark : View stuff
@@ -240,7 +244,7 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
 - (void)movePanelRight // to show left panel
 {
     
-       NSLog(@"right deegate ");
+    NSLog(@"right deegate ");
     
     UIView *childView = [self getLeftView];
     [self.view sendSubviewToBack:childView];
@@ -251,9 +255,10 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
-                            // setButton tags for all VC
+                             // setButton tags for all VC
                              self.timelineViewController.hbButton.tag = 0;
                              self.profileViewController.hbButton.tag = 0;
+                             self.mentionsViewController.hbButton.tag = 0;
                          }
                      }];
 }
@@ -262,13 +267,13 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
 
 - (void)movePanelToOriginalPosition
 {
-       NSLog(@"delegate Orignal");
+    NSLog(@"delegate Orignal");
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState
-                              animations:^{
-        self.currentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    } completion:^(BOOL finished) {
-        [self resetMainView];
-    }];
+                     animations:^{
+                         self.currentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                     } completion:^(BOOL finished) {
+                         [self resetMainView];
+                     }];
 }
 
 - (void) resetMainView{
@@ -277,6 +282,7 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
         // setButton tags for all VC
         self.timelineViewController.hbButton.tag = 1;
         self.profileViewController.hbButton.tag = 1;
+        self.mentionsViewController.hbButton.tag = 1;
         self.showingLeftPanel = NO;
     }
     // remove shadows
@@ -297,7 +303,7 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showVC:) name:kHBbuttonCLicked object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showVC:) name:kHBbuttonCLicked object:nil];
     }
     return self;
 }
@@ -309,7 +315,7 @@ static NSString *kHBbuttonCLicked = @"HBbuttonClick";
         
         NSNumber *index = [userInfo objectForKey:@"butonClick"];
         
-         NSLog (@"Notification is successfully received! %d",index.intValue);
+        NSLog (@"Notification is successfully received! %d",index.intValue);
         [self loadVC:index.intValue];
     }
 }

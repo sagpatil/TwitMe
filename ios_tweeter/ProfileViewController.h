@@ -22,9 +22,9 @@
 @end
 
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, assign) id<ProfileViewControllerDelegate> delegate;
 @property (weak, nonatomic) User *user;
 @property (weak, nonatomic) IBOutlet UIButton *hbButton;
-
+@property (nonatomic,assign) BOOL comingFromHBVC;
 @end

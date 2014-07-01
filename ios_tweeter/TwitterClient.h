@@ -25,6 +25,9 @@
 
 - (void)homeTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure;
 
+
+- (void)userTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure;
+
 - (void)mentionsTimelineWithSuccess:(NSDictionary *)param success:(void (^)(NSArray* tweets))success failure:(void (^)(NSError *error))failure;
 
 - (void) postTweet:(NSDictionary *)param success:(void (^)(Tweet* tweet))success failure:(void (^)(NSError *))failure;
