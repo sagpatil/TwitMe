@@ -15,6 +15,17 @@ static NSString *knewTweetNotification = @"newTweet";
 
 @interface ComposeViewController ()
 @property (nonatomic,assign) unsigned long textCount;
+@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *profileTweetHandleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *textCountLabel;
+
+
+- (IBAction)onTweetButtonClicked:(id)sender;
+- (IBAction)onCancelButtonClicked:(id)sender;
+
 @end
 
 @implementation ComposeViewController

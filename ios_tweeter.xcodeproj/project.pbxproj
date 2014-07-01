@@ -44,7 +44,6 @@
 		F18E4014195D1F1C00688D62 /* ProfileBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E4013195D1F1C00688D62 /* ProfileBannerView.m */; };
 		F18E4019195DBE5700688D62 /* webViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18E4017195DBE5700688D62 /* webViewController.m */; };
 		F18E401A195DBE5700688D62 /* webViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F18E4018195DBE5700688D62 /* webViewController.xib */; };
-		F19C656E196096F000B80986 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19C656C196096F000B80986 /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,8 +112,6 @@
 		F18E4016195DBE5700688D62 /* webViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webViewController.h; sourceTree = "<group>"; };
 		F18E4017195DBE5700688D62 /* webViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webViewController.m; sourceTree = "<group>"; };
 		F18E4018195DBE5700688D62 /* webViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = webViewController.xib; sourceTree = "<group>"; };
-		F19C656B196096F000B80986 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		F19C656C196096F000B80986 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,8 +219,6 @@
 		F1825C7A1953D9E600631695 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				F19C656B196096F000B80986 /* MenuViewController.h */,
-				F19C656C196096F000B80986 /* MenuViewController.m */,
 				F1825C7719538C4000631695 /* TwitterClient.h */,
 				F1825C7819538C4000631695 /* TwitterClient.m */,
 			);
@@ -440,7 +435,6 @@
 				F14EB5141960B0FF009B5E94 /* MainViewController.m in Sources */,
 				F1825C9D1954815400631695 /* DetailViewController.m in Sources */,
 				F1825C821953E38400631695 /* ListViewController.m in Sources */,
-				F19C656E196096F000B80986 /* MenuViewController.m in Sources */,
 				F1825C4E1953866D00631695 /* AppDelegate.m in Sources */,
 				F1825C4A1953866D00631695 /* main.m in Sources */,
 				F18E4019195DBE5700688D62 /* webViewController.m in Sources */,

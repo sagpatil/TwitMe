@@ -12,15 +12,5 @@
 #import "Tweet.h"
 
 @interface ComposeViewController : UIViewController<UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
-
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *profileTweetHandleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *textCountLabel;
-
-
-- (IBAction)onTweetButtonClicked:(id)sender;
-- (IBAction)onCancelButtonClicked:(id)sender;
 
 @end

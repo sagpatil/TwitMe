@@ -10,12 +10,6 @@
 
 @protocol HBViewControllerDelegate <NSObject>
 
-@optional
-- (void)imageSelected:(UIImage *)image withTitle:(NSString *)imageTitle withCreator:(NSString *)imageCreator;
-
-@required
-//
-
 @end
 
 @interface HBViewController : UIViewController

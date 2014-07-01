@@ -17,6 +17,20 @@ static NSString *clickNotification = @"showDetail";
 static NSString *replyNotification = @"replyTweet";
 
 @interface DetailViewController ()
+//@property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageVIew;
+@property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetHandleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *retweetedByLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *favoriteCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
+
+@property (weak, nonatomic) IBOutlet UITextView *tweetContentView;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *retweetedByHeight;
 @property (assign, nonatomic) long index;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tweetContentHeight;
